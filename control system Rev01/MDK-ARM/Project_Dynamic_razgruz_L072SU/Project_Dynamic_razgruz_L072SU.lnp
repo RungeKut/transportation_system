@@ -3,6 +3,7 @@
 ".\project_dynamic_razgruz_l072su\main.o"
 ".\project_dynamic_razgruz_l072su\gpio.o"
 ".\project_dynamic_razgruz_l072su\adc.o"
+".\project_dynamic_razgruz_l072su\iwdg.o"
 ".\project_dynamic_razgruz_l072su\spi.o"
 ".\project_dynamic_razgruz_l072su\tim.o"
 ".\project_dynamic_razgruz_l072su\usart.o"

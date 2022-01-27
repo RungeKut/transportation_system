@@ -32,7 +32,6 @@
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_adc.h
-.\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_iwdg.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_crs.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_rcc.h
@@ -42,7 +41,7 @@
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_cortex.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_utils.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_pwr.h
-.\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_rtc.h
+.\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h
@@ -53,7 +52,6 @@
 .\project_dynamic_razgruz_l072su\iwdg.o: ..\User\Inc\rs485.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ..\User\Inc\step_motor.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ..\User\Inc\power.h
-.\project_dynamic_razgruz_l072su\iwdg.o: ../Core/Inc/dma.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ../Core/Inc/gpio.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ..\User\Inc\CurrentBDC.h
 .\project_dynamic_razgruz_l072su\iwdg.o: ..\User\Inc\ina239_power.h

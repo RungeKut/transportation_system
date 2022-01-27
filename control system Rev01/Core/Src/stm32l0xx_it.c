@@ -224,7 +224,7 @@ void USART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
   rs485_IRQHandler();
-//  LL_GPIO_TogglePin(XS11_GPIO_Port, XS11_Pin);
+  LL_GPIO_TogglePin(XS11_GPIO_Port, XS11_Pin);
   /* USER CODE END USART1_IRQn 0 */
   /* USER CODE BEGIN USART1_IRQn 1 */
 	

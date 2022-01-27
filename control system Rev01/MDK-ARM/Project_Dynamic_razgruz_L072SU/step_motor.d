@@ -32,6 +32,7 @@
 .\project_dynamic_razgruz_l072su\step_motor.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h
 .\project_dynamic_razgruz_l072su\step_motor.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h
 .\project_dynamic_razgruz_l072su\step_motor.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_adc.h
+.\project_dynamic_razgruz_l072su\step_motor.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_iwdg.h
 .\project_dynamic_razgruz_l072su\step_motor.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_crs.h
 .\project_dynamic_razgruz_l072su\step_motor.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_rcc.h
 .\project_dynamic_razgruz_l072su\step_motor.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_bus.h

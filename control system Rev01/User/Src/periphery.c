@@ -8,10 +8,9 @@ volatile uint8_t bdcSpeed_flag = 0;
 void irq_enable(void)//																											 ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
-  NVIC_EnableIRQ(RTC_IRQn);
-  NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
+//  NVIC_EnableIRQ(RTC_IRQn);
   NVIC_EnableIRQ(TIM2_IRQn);
-  NVIC_EnableIRQ(TIM2_IRQn);
+  NVIC_EnableIRQ(TIM6_IRQn);
   NVIC_EnableIRQ(TIM21_IRQn);
   NVIC_EnableIRQ(TIM22_IRQn);
 //  NVIC_EnableIRQ(SPI1_IRQn);
@@ -23,10 +22,9 @@ void irq_enable(void)//																											 ┃
 void irq_disable(void)//                                                     ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
-  NVIC_DisableIRQ(RTC_IRQn);
-  NVIC_DisableIRQ(DMA1_Channel2_3_IRQn);
+//  NVIC_DisableIRQ(RTC_IRQn);
   NVIC_DisableIRQ(TIM2_IRQn);
-  NVIC_DisableIRQ(TIM2_IRQn);
+  NVIC_DisableIRQ(TIM6_IRQn);
   NVIC_DisableIRQ(TIM21_IRQn);
   NVIC_DisableIRQ(TIM22_IRQn);
 //  NVIC_DisableIRQ(SPI1_IRQn);
@@ -158,30 +156,30 @@ void ButtonFlagControl(void)//                                               ┃
       Sleep_Reset();
     }
     else if ((!( GLOBAL_FLAG_TX & LIMIT_SWITCH_FORWARD_FLAG )) && //Кнопка подъемник вперед
-               ( Button_Status == BUT_FORWARD                ) &&
-               (bdcSpeed_flag == 0))
+               ( Button_Status == BUT_FORWARD                ))/* &&
+               (bdcSpeed_flag == 0))*/
     {
-      bdcSpeed_flag = 1;
+    //  bdcSpeed_flag = 1;
       GLOBAL_FLAG_TX |= BUT_FORWARD_FLAG;
       if (!(LL_TIM_CC_IsEnabledChannel(BDC_TIM, BDC_TIM_CH)))
       {
 //      LL_GPIO_SetOutputPin(PP_LEFT_GPIO_Port,PP_LEFT_Pin); //Выход на плату подъемника
         LL_GPIO_SetOutputPin(Relay_1_GPIO_Port, Relay_1_Pin);
-        LL_mDelay(5);
+//        LL_mDelay(5);
       }
       bdc_ON();
     }
     else if ((!( GLOBAL_FLAG_TX & LIMIT_SWITCH_BACKWARD_FLAG )) && //Кнопка подъемник назад
-               ( Button_Status == BUT_BACKWARD                ) &&
-               (bdcSpeed_flag == 0))
+               ( Button_Status == BUT_BACKWARD                ))/* &&
+               (bdcSpeed_flag == 0))*/
     {
-      bdcSpeed_flag = 1;
+    //  bdcSpeed_flag = 1;
       GLOBAL_FLAG_TX |= BUT_BACKWARD_FLAG;
       if (!(LL_TIM_CC_IsEnabledChannel(BDC_TIM, BDC_TIM_CH)))
       {
 //      LL_GPIO_SetOutputPin(PP_RIGHT_GPIO_Port,PP_RIGHT_Pin); //Выход на плату подъемника
         LL_GPIO_SetOutputPin(Relay_2_GPIO_Port, Relay_2_Pin);
-        LL_mDelay(5);
+//        LL_mDelay(5);
       }
       bdc_ON();
     }
@@ -190,6 +188,7 @@ void ButtonFlagControl(void)//                                               ┃
                ( Battery_Status != CHARGING ))
     {
       GLOBAL_FLAG_TX |= BUT_STRONG_FLAG;
+      GLOBAL_FLAG_TX &= ~STOPING_FLAG;
       MOTOR_START_DOWN(AC_TIM, ST_TIM);
     }
     else if ((!( GLOBAL_FLAG_TX & LIMIT_SWITCH_DOWN_FLAG)) && //Кнопка разгрузка уменьшить вес
@@ -197,6 +196,7 @@ void ButtonFlagControl(void)//                                               ┃
                ( Battery_Status != CHARGING ))
     {
       GLOBAL_FLAG_TX |= BUT_WEAK_FLAG;
+      GLOBAL_FLAG_TX &= ~STOPING_FLAG;
       MOTOR_START_UP(AC_TIM, ST_TIM);
     }
     else if (( Button_Status == BUT_SPEED_UP ) && //Кнопка скорость +

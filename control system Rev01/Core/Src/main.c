@@ -20,6 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "iwdg.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -97,6 +98,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_ADC_Init();
   MX_SPI1_Init();
+  MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
 
 	StartUpConfig();
@@ -117,7 +119,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
+    LL_IWDG_ReloadCounter(IWDG);
 	}
   /* USER CODE END 3 */
 }
@@ -148,6 +150,13 @@ void SystemClock_Config(void)
 
   }
   LL_RCC_HSI_SetCalibTrimming(16);
+  LL_RCC_LSI_Enable();
+
+   /* Wait till LSI is ready */
+  while(LL_RCC_LSI_IsReady() != 1)
+  {
+
+  }
   LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSE, LL_RCC_PLL_MUL_12, LL_RCC_PLL_DIV_3);
   LL_RCC_PLL_Enable();
 

@@ -114,28 +114,27 @@ void SetDutyCycleBDC(TIM_TypeDef *TIMx, uint16_t duty)//                     ┃
 void Encoder_IRQHandler_Callback(TIM_TypeDef *TIMx)//                        ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
-  uint32_t temp_speed;
+//  LL_GPIO_TogglePin(XS11_GPIO_Port, XS11_Pin);
   if (LL_TIM_IsActiveFlag_UPDATE(TIMx))
   {
-//    if (LL_TIM_IsActiveFlag_TRIG(TIMx))
-//    {
-      Encoder_Period = LL_TIM_IC_GetCaptureCH1(TIMx); //*0.1ms
-//      LL_TIM_ClearFlag_CC1(TIMx);
-//    }
-//    if (LL_TIM_IsActiveFlag_TRIG(TIMx))
-//    {
-      Encoder_DutyCicle = LL_TIM_IC_GetCaptureCH2(TIMx); //*0.1ms
-//      LL_TIM_ClearFlag_CC2(TIMx);
-//    }
     LL_TIM_ClearFlag_UPDATE(TIMx);
-//    TIM2->CNT = 0;
-//    LL_TIM_Is
-    Encoder_Freqency = 10000000 / Encoder_Period; //mHz
-    temp_speed = Encoder_Freqency * 3142 * ENCODER_DIAM / ENCODER_HOLES / 1000000;
-    if (temp_speed <= MAX_SPEED_BDC)
-    {
-      Encoder_Speed = temp_speed;
-    }
+    Encoder_Period = LL_TIM_IC_GetCaptureCH1(TIMx); //*0.1ms
+    LL_TIM_ClearFlag_CC1(TIMx);
+    Encoder_DutyCicle = LL_TIM_IC_GetCaptureCH2(TIMx); //*0.1ms
+    LL_TIM_ClearFlag_CC2(TIMx);
+  }
+}
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
+//Посчитать скорость с энкодера                                              ┃
+void Encoder_Speed_GET(void)//                        ┃
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
+{
+  uint32_t temp_speed;
+  Encoder_Freqency = 10000000 / Encoder_Period; //mHz
+  temp_speed = Encoder_Freqency * 3142 * ENCODER_DIAM / ENCODER_HOLES / 1000000;
+  if (temp_speed <= MAX_SPEED_BDC)
+  {
+    Encoder_Speed = temp_speed;
   }
 }
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
@@ -164,6 +163,7 @@ void bdc_ON(void)//                                                          ┃
   }
 
     CurrentBDC_GET();
+    Encoder_Speed_GET();
     Sleep_Reset();
     SetDutyCycleBDC(BDC_TIM, DutyToBDC);
     if ((Encoder_Speed < speed) && (DutyToBDC + 3 < BDCMaxDutyCicle))
@@ -206,7 +206,7 @@ void bdc_OFF(void)//                                                         ┃
     __NVIC_DisableIRQ(ENCODER_IRQ);
     LL_TIM_CC_DisableChannel(BDC_TIM, BDC_TIM_CH);
     LL_TIM_DisableCounter(BDC_TIM);
-    LL_mDelay(50);
+//    LL_mDelay(50);
     LL_GPIO_ResetOutputPin(Relay_1_GPIO_Port, Relay_1_Pin);
     LL_GPIO_ResetOutputPin(Relay_2_GPIO_Port, Relay_2_Pin);
     GLOBAL_FLAG_TX &= ~BDC_ON_FLAG;

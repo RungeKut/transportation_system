@@ -29,15 +29,24 @@ void rs485_IRQHandler(void)
   {
     if (RingBuffer_flag != RINGBUFFER_ERR_FULL)
     {
+
       RingBuffer_flag = RingBuffer_trywrite();
+
     }
   }
   else if (LL_USART_IsActiveFlag_TC(USART1))
   {
     if (RingBuffer_flag != RINGBUFFER_ERR_EMPTY)
     {
+
       rs485_transmiting();
+
     }
+  }
+  else
+  {
+    LL_USART_ReceiveData8(USART1);
+ //   LL_USART_TransmitData8(USART1);
   }
 }
 //=========================================================
