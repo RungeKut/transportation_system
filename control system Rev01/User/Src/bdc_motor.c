@@ -17,14 +17,13 @@ void bdc_StartUp(void)//                                                     ┃
   LL_TIM_EnableCounter(BDC_TIM);
 //  LL_TIM_OC_SetCompareCH3(BDC_TIM, 0x03E8);
   SetDutyCycleBDC(BDC_TIM, 0);
-  NVIC_DisableIRQ(ENCODER_IRQ);
-//  LL_TIM_EnableDMAReq_CC4(ENCODER_TIM);
+//  NVIC_DisableIRQ(ENCODER_IRQ);
   LL_TIM_EnableIT_CC1(ENCODER_TIM);
   LL_TIM_CC_EnableChannel(ENCODER_TIM, ENCODER_DirectCH);
   LL_TIM_EnableIT_CC2(ENCODER_TIM);
   LL_TIM_CC_EnableChannel(ENCODER_TIM, ENCODER_IndirectCH);
   LL_TIM_EnableCounter(ENCODER_TIM);
-  LL_TIM_EnableIT_UPDATE(ENCODER_TIM);
+//  LL_TIM_EnableIT_UPDATE(ENCODER_TIM);
 }
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
 //Увеличить скорость карретки                                                ┃
@@ -118,17 +117,25 @@ void Encoder_IRQHandler_Callback(TIM_TypeDef *TIMx)//                        ┃
   if (LL_TIM_IsActiveFlag_UPDATE(TIMx))
   {
     LL_TIM_ClearFlag_UPDATE(TIMx);
+  }
+  else if (LL_TIM_IsActiveFlag_CC1(TIMx))
+  {
     Encoder_Period = LL_TIM_IC_GetCaptureCH1(TIMx); //*0.1ms
     LL_TIM_ClearFlag_CC1(TIMx);
+  }
+  else if (LL_TIM_IsActiveFlag_CC2(TIMx))
+  {
     Encoder_DutyCicle = LL_TIM_IC_GetCaptureCH2(TIMx); //*0.1ms
     LL_TIM_ClearFlag_CC2(TIMx);
   }
 }
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
 //Посчитать скорость с энкодера                                              ┃
-void Encoder_Speed_GET(void)//                        ┃
+void Encoder_Speed_GET(void)//                                               ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
+//  Encoder_Period = LL_TIM_IC_GetCaptureCH1(ENCODER_TIM);    //*0.1ms
+//  Encoder_DutyCicle = LL_TIM_IC_GetCaptureCH2(ENCODER_TIM); //*0.1ms
   uint32_t temp_speed;
   Encoder_Freqency = 10000000 / Encoder_Period; //mHz
   temp_speed = Encoder_Freqency * 3142 * ENCODER_DIAM / ENCODER_HOLES / 1000000;
@@ -148,13 +155,13 @@ void bdc_ON(void)//                                                          ┃
     LL_TIM_SetPrescaler(BDC_TIM, BDC_PWM_Freqency);
     BOOST_ENABLE;
     DC_DC_SW_ENABLE;
-    LL_TIM_EnableIT_CC1(ENCODER_TIM);
-    LL_TIM_CC_EnableChannel(ENCODER_TIM, ENCODER_DirectCH);
-    LL_TIM_EnableIT_CC2(ENCODER_TIM);
-    LL_TIM_CC_EnableChannel(ENCODER_TIM, ENCODER_IndirectCH);
-    LL_TIM_EnableCounter(ENCODER_TIM);
-    LL_TIM_EnableIT_UPDATE(ENCODER_TIM);
-    __NVIC_EnableIRQ(ENCODER_IRQ);
+//    LL_TIM_EnableIT_CC1(ENCODER_TIM);
+//    LL_TIM_CC_EnableChannel(ENCODER_TIM, ENCODER_DirectCH);
+//    LL_TIM_EnableIT_CC2(ENCODER_TIM);
+//    LL_TIM_CC_EnableChannel(ENCODER_TIM, ENCODER_IndirectCH);
+//    LL_TIM_EnableCounter(ENCODER_TIM);
+//    LL_TIM_EnableIT_UPDATE(ENCODER_TIM);
+//    __NVIC_EnableIRQ(ENCODER_IRQ);
     SetDutyCycleBDC(BDC_TIM, 0);
     LL_TIM_EnableCounter(BDC_TIM);
     LL_TIM_CC_EnableChannel(BDC_TIM, BDC_TIM_CH);
@@ -196,17 +203,17 @@ void bdc_OFF(void)//                                                         ┃
     DC_DC_SW_DISABLE;
     Encoder_Speed = 0;
     DutyToBDC = 0;
-    LL_TIM_DisableIT_CC1(ENCODER_TIM);
-    LL_TIM_CC_DisableChannel(ENCODER_TIM, ENCODER_DirectCH);
-    LL_TIM_DisableIT_CC2(ENCODER_TIM);
-    LL_TIM_CC_DisableChannel(ENCODER_TIM, ENCODER_IndirectCH);
-    LL_TIM_DisableCounter(ENCODER_TIM);
-    LL_TIM_DisableIT_UPDATE(ENCODER_TIM);
+//    LL_TIM_DisableIT_CC1(ENCODER_TIM);
+//    LL_TIM_CC_DisableChannel(ENCODER_TIM, ENCODER_DirectCH);
+//    LL_TIM_DisableIT_CC2(ENCODER_TIM);
+//    LL_TIM_CC_DisableChannel(ENCODER_TIM, ENCODER_IndirectCH);
+//    LL_TIM_DisableCounter(ENCODER_TIM);
+//    LL_TIM_DisableIT_UPDATE(ENCODER_TIM);
+//    __NVIC_DisableIRQ(ENCODER_IRQ);
     SetDutyCycleBDC(BDC_TIM, 0);
-    __NVIC_DisableIRQ(ENCODER_IRQ);
     LL_TIM_CC_DisableChannel(BDC_TIM, BDC_TIM_CH);
     LL_TIM_DisableCounter(BDC_TIM);
-//    LL_mDelay(50);
+    LL_mDelay(50);
     LL_GPIO_ResetOutputPin(Relay_1_GPIO_Port, Relay_1_Pin);
     LL_GPIO_ResetOutputPin(Relay_2_GPIO_Port, Relay_2_Pin);
     GLOBAL_FLAG_TX &= ~BDC_ON_FLAG;

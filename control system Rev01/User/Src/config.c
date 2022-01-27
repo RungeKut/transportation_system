@@ -86,7 +86,7 @@ void StartUpConfig(void)//                                                   ┃
   
 //  LL_TIM_DeInit(TIM2);
   
-//  bdc_StartUp();
+  bdc_StartUp();
   
   step_StartUp();
   
