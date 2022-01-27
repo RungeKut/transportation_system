@@ -144,7 +144,7 @@ void bdc_ON(void)//                                                          ┃
 {
   if (!(GLOBAL_FLAG_TX & BDC_ON_FLAG))
   {
-    bdc_TIM2_Init();
+//    bdc_TIM2_Init();
     LL_TIM_SetPrescaler(BDC_TIM, BDC_PWM_Freqency);
     BOOST_ENABLE;
     DC_DC_SW_ENABLE;
@@ -211,7 +211,7 @@ void bdc_OFF(void)//                                                         ┃
     LL_GPIO_ResetOutputPin(Relay_2_GPIO_Port, Relay_2_Pin);
     GLOBAL_FLAG_TX &= ~BDC_ON_FLAG;
     
-    LL_TIM_DeInit(TIM2);
+//    LL_TIM_DeInit(TIM2);
   }
 }
 void bdc_TIM2_Init(void)

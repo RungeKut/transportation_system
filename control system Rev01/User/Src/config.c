@@ -83,7 +83,9 @@ void StartUpConfig(void)//                                                   ┃
   rs485_StartUp();
   
 //  Config_SysTick();
-  LL_TIM_DeInit(TIM2);
+  
+//  LL_TIM_DeInit(TIM2);
+  
 //  bdc_StartUp();
   
   step_StartUp();
