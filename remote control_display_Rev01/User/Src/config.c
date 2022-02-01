@@ -46,22 +46,28 @@ void Config_SysTick(void)
 void StartUpConfig(void)//                                                   ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
-  DebugOnStandByMode();
+//  DebugOnStandByMode();
+  
+  LL_IWDG_EnableWriteAccess(IWDG);
+  LL_IWDG_SetPrescaler(IWDG, LL_IWDG_PRESCALER_128);
+  LL_IWDG_SetReloadCounter(IWDG, 0x0121);
+  LL_IWDG_SetWindow(IWDG, 0x0121);
+  LL_IWDG_DisableWriteAccess(IWDG);
   
   RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
 //  RCC->APB1ENR |= RCC_APB1ENR_TIM7EN;
-  LL_PWR_EnableWakeUpPin(LL_PWR_WAKEUP_PIN2);
+//  LL_PWR_EnableWakeUpPin(LL_PWR_WAKEUP_PIN2);
   
   LL_TIM_EnableIT_UPDATE(TIM2);
 	LL_TIM_EnableCounter(TIM2);
   
-  LL_TIM_SetPrescaler(TIM_Sleep, 1092 * SleepTime_sec);
-  LL_TIM_SetAutoReload(TIM_Sleep, 0xFFFF);
-  LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
+//  LL_TIM_SetPrescaler(TIM_Sleep, 1092 * SleepTime_sec);
+//  LL_TIM_SetAutoReload(TIM_Sleep, 0xFFFF);
+//  LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 	LL_TIM_EnableIT_UPDATE(TIM_Sleep);
 	LL_TIM_EnableCounter(TIM_Sleep); //Таймер сна
   
-	LL_TIM_EnableIT_UPDATE(TIM6);
+//	LL_TIM_EnableIT_UPDATE(TIM6);
 //	LL_TIM_EnableCounter(TIM6);
 						
   st7735_StartUp();

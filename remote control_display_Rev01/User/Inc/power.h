@@ -10,5 +10,6 @@ void irq_disable(void);
 void DebugOnStandByMode(void);
 void GoToStandbyMode(void);
 void ResetTIM_Sleep(void);
+void SleepAfterWatchDog(void);
 
 #endif /* POWER_H */

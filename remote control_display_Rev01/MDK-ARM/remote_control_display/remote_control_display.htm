@@ -3,7 +3,7 @@
 <title>Static Call Graph - [remote_control_display\remote_control_display.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image remote_control_display\remote_control_display.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Feb 01 16:24:55 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Feb 01 19:58:24 2022
 <BR><P>
 <H3>Maximum Stack Usage =        116 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -75,7 +75,7 @@ Function Pointers
  <LI><a href="#[23]">TIM1_UP_TIM16_IRQHandler</a> from startup_stm32f334x8.o(.text) referenced from startup_stm32f334x8.o(RESET)
  <LI><a href="#[26]">TIM2_IRQHandler</a> from stm32f3xx_it.o(i.TIM2_IRQHandler) referenced from startup_stm32f334x8.o(RESET)
  <LI><a href="#[27]">TIM3_IRQHandler</a> from stm32f3xx_it.o(i.TIM3_IRQHandler) referenced from startup_stm32f334x8.o(RESET)
- <LI><a href="#[30]">TIM6_DAC1_IRQHandler</a> from stm32f3xx_it.o(i.TIM6_DAC1_IRQHandler) referenced from startup_stm32f334x8.o(RESET)
+ <LI><a href="#[30]">TIM6_DAC1_IRQHandler</a> from startup_stm32f334x8.o(.text) referenced from startup_stm32f334x8.o(RESET)
  <LI><a href="#[31]">TIM7_DAC2_IRQHandler</a> from startup_stm32f334x8.o(.text) referenced from startup_stm32f334x8.o(RESET)
  <LI><a href="#[2b]">USART1_IRQHandler</a> from startup_stm32f334x8.o(.text) referenced from startup_stm32f334x8.o(RESET)
  <LI><a href="#[2c]">USART2_IRQHandler</a> from startup_stm32f334x8.o(.text) referenced from startup_stm32f334x8.o(RESET)
@@ -235,6 +235,9 @@ Global Symbols
 <P><STRONG><a name="[23]"></a>TIM1_UP_TIM16_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f334x8.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
 </UL>
+<P><STRONG><a name="[30]"></a>TIM6_DAC1_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f334x8.o(.text))
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
+</UL>
 <P><STRONG><a name="[31]"></a>TIM7_DAC2_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f334x8.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
 </UL>
@@ -264,8 +267,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[68]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
@@ -334,7 +336,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[92]"></a>DMA1_RX_ClearFlag</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, rs485.o(i.DMA1_RX_ClearFlag))
-<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
+<BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
 </UL>
 
 <P><STRONG><a name="[4a]"></a>DMA1_RX_InitStart</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, rs485.o(i.DMA1_RX_InitStart))
@@ -350,12 +352,12 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_TX_InitStart
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Errors
 </UL>
 
 <P><STRONG><a name="[93]"></a>DMA1_TX_ClearFlag</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, rs485.o(i.DMA1_TX_ClearFlag))
-<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
+<BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
 </UL>
 
 <P><STRONG><a name="[4d]"></a>DMA1_TX_InitStart</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, rs485.o(i.DMA1_TX_InitStart))
@@ -370,7 +372,7 @@ Global Symbols
 <P><STRONG><a name="[48]"></a>DMA1_TX_Stop</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, rs485.o(i.DMA1_TX_Stop))
 <BR><BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
+<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_RX_InitStart
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Errors
 </UL>
@@ -410,12 +412,8 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f3xx_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
 </UL>
-<P><STRONG><a name="[81]"></a>DebugOnStandByMode</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, power.o(i.DebugOnStandByMode))
-<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartUpConfig
-</UL>
-
 <P><STRONG><a name="[51]"></a>DisplayOut</STRONG> (Thumb, 688 bytes, Stack size 40 bytes, st7735.o(i.DisplayOut))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = DisplayOut &rArr; lcd_st7735s_fillrect &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_cmd
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = DisplayOut &rArr; lcd_st7735s_fillrect &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_data
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_img8
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_fillrect
@@ -424,8 +422,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[55]"></a>GoToStandbyMode</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, power.o(i.GoToStandbyMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = GoToStandbyMode &rArr; LL_mDelay
+<P><STRONG><a name="[55]"></a>GoToStandbyMode</STRONG> (Thumb, 122 bytes, Stack size 16 bytes, power.o(i.GoToStandbyMode))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GoToStandbyMode &rArr; LL_mDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_mDelay
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
@@ -435,6 +433,7 @@ Global Symbols
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayNs
 </UL>
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SleepAfterWatchDog
 </UL>
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 84 bytes, Stack size 0 bytes, stm32f3xx_it.o(i.HardFault_Handler))
@@ -452,13 +451,13 @@ Global Symbols
 <P><STRONG><a name="[6a]"></a>LL_GPIO_Init</STRONG> (Thumb, 318 bytes, Stack size 20 bytes, stm32f3xx_ll_gpio.o(i.LL_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = LL_GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[85]"></a>LL_Init1msTick</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f3xx_ll_utils.o(i.LL_Init1msTick))
-<BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<P><STRONG><a name="[84]"></a>LL_Init1msTick</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f3xx_ll_utils.o(i.LL_Init1msTick))
+<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
 <P><STRONG><a name="[5c]"></a>LL_RCC_GetSystemClocksFreq</STRONG> (Thumb, 32 bytes, Stack size 4 bytes, stm32f3xx_ll_rcc.o(i.LL_RCC_GetSystemClocksFreq))
@@ -488,15 +487,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
 </UL>
 
-<P><STRONG><a name="[86]"></a>LL_SetSystemCoreClock</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f3xx_ll_utils.o(i.LL_SetSystemCoreClock))
-<BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<P><STRONG><a name="[85]"></a>LL_SetSystemCoreClock</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f3xx_ll_utils.o(i.LL_SetSystemCoreClock))
+<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
 <P><STRONG><a name="[72]"></a>LL_TIM_Init</STRONG> (Thumb, 112 bytes, Stack size 20 bytes, stm32f3xx_ll_tim.o(i.LL_TIM_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = LL_TIM_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 </UL>
 
@@ -506,7 +504,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetUSARTClockFreq
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetSystemClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
 <P><STRONG><a name="[49]"></a>LL_mDelay</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, stm32f3xx_ll_utils.o(i.LL_mDelay))
@@ -516,10 +514,10 @@ Global Symbols
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
 <LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardFault_Handler
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Errors
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
 </UL>
 
-<P><STRONG><a name="[90]"></a>MX_CRC_Init</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, crc.o(i.MX_CRC_Init))
+<P><STRONG><a name="[8f]"></a>MX_CRC_Init</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, crc.o(i.MX_CRC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = MX_CRC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -535,7 +533,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[67]"></a>MX_GPIO_Init</STRONG> (Thumb, 176 bytes, Stack size 56 bytes, gpio.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[67]"></a>MX_GPIO_Init</STRONG> (Thumb, 218 bytes, Stack size 56 bytes, gpio.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = MX_GPIO_Init &rArr; LL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_GPIO_Init
@@ -543,6 +541,10 @@ Global Symbols
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[90]"></a>MX_IWDG_Init</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, iwdg.o(i.MX_IWDG_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[6b]"></a>MX_SPI1_Init</STRONG> (Thumb, 154 bytes, Stack size 80 bytes, spi.o(i.MX_SPI1_Init))
@@ -555,7 +557,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6d]"></a>MX_TIM2_Init</STRONG> (Thumb, 116 bytes, Stack size 32 bytes, tim.o(i.MX_TIM2_Init))
+<P><STRONG><a name="[6d]"></a>MX_TIM2_Init</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, tim.o(i.MX_TIM2_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = MX_TIM2_Init &rArr; LL_TIM_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_TIM_Init
@@ -568,7 +570,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[73]"></a>MX_TIM3_Init</STRONG> (Thumb, 116 bytes, Stack size 32 bytes, tim.o(i.MX_TIM3_Init))
+<P><STRONG><a name="[73]"></a>MX_TIM3_Init</STRONG> (Thumb, 144 bytes, Stack size 32 bytes, tim.o(i.MX_TIM3_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = MX_TIM3_Init &rArr; LL_TIM_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_TIM_Init
@@ -581,30 +583,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[74]"></a>MX_TIM6_Init</STRONG> (Thumb, 102 bytes, Stack size 32 bytes, tim.o(i.MX_TIM6_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = MX_TIM6_Init &rArr; LL_TIM_Init
-</UL>
-<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_TIM_Init
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EncodePriority
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_APB1_GRP1_EnableClock
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
-</UL>
-<BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[75]"></a>MX_USART1_UART_Init</STRONG> (Thumb, 312 bytes, Stack size 72 bytes, usart.o(i.MX_USART1_UART_Init))
+<P><STRONG><a name="[74]"></a>MX_USART1_UART_Init</STRONG> (Thumb, 312 bytes, Stack size 72 bytes, usart.o(i.MX_USART1_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = MX_USART1_UART_Init &rArr; LL_USART_Init &rArr; LL_RCC_GetUSARTClockFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_USART_Init
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetPeriphSize
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetPeriphIncMode
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetMode
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetMemorySize
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetMemoryIncMode
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetDataTransferDirection
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetChannelPriorityLevel
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetPeriphSize
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetPeriphIncMode
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetMode
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetMemorySize
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetMemoryIncMode
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetDataTransferDirection
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_DMA_SetChannelPriorityLevel
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_GPIO_Init
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
@@ -646,7 +635,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5d]"></a>RCC_GetSystemClockFreq</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f3xx_ll_rcc.o(i.RCC_GetSystemClockFreq))
-<BR><BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PLL_GetFreqDomain_SYS
+<BR><BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PLL_GetFreqDomain_SYS
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetUSARTClockFreq
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_RCC_GetSystemClocksFreq
@@ -655,31 +644,38 @@ Global Symbols
 <P><STRONG><a name="[f]"></a>RCC_IRQHandler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f3xx_it.o(i.RCC_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
 </UL>
-<P><STRONG><a name="[7d]"></a>RCC_PLL_GetFreqDomain_SYS</STRONG> (Thumb, 58 bytes, Stack size 0 bytes, stm32f3xx_ll_rcc.o(i.RCC_PLL_GetFreqDomain_SYS))
+<P><STRONG><a name="[7c]"></a>RCC_PLL_GetFreqDomain_SYS</STRONG> (Thumb, 58 bytes, Stack size 0 bytes, stm32f3xx_ll_rcc.o(i.RCC_PLL_GetFreqDomain_SYS))
 <BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetSystemClockFreq
 </UL>
 
-<P><STRONG><a name="[91]"></a>ResetTIM_Sleep</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, power.o(i.ResetTIM_Sleep))
+<P><STRONG><a name="[91]"></a>ResetTIM_Sleep</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, power.o(i.ResetTIM_Sleep))
 <BR><BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f3xx_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
 </UL>
-<P><STRONG><a name="[7e]"></a>ScanButton</STRONG> (Thumb, 234 bytes, Stack size 24 bytes, periphery.o(i.ScanButton))
+<P><STRONG><a name="[7d]"></a>ScanButton</STRONG> (Thumb, 234 bytes, Stack size 24 bytes, periphery.o(i.ScanButton))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ScanButton
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_GPIO_IsInputPinSet
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_GPIO_IsInputPinSet
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[80]"></a>StartUpConfig</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, config.o(i.StartUpConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = StartUpConfig &rArr; st7735_StartUp &rArr; lcd_st7735s_fillrect &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_cmd
+<P><STRONG><a name="[7f]"></a>SleepAfterWatchDog</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, power.o(i.SleepAfterWatchDog))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SleepAfterWatchDog &rArr; GoToStandbyMode &rArr; LL_mDelay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DebugOnStandByMode
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
+<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GoToStandbyMode
+</UL>
+<BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[80]"></a>StartUpConfig</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, config.o(i.StartUpConfig))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = StartUpConfig &rArr; st7735_StartUp &rArr; lcd_st7735s_fillrect &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_data
+</UL>
+<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rs485_StartUp
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -687,11 +683,11 @@ Global Symbols
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f3xx_it.o(i.SysTick_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
 </UL>
-<P><STRONG><a name="[84]"></a>SystemClock_Config</STRONG> (Thumb, 162 bytes, Stack size 16 bytes, main.o(i.SystemClock_Config))
+<P><STRONG><a name="[83]"></a>SystemClock_Config</STRONG> (Thumb, 180 bytes, Stack size 16 bytes, main.o(i.SystemClock_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SystemClock_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_SetSystemCoreClock
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_Init1msTick
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_SetSystemCoreClock
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_Init1msTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -707,14 +703,11 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
 </UL>
 <P><STRONG><a name="[27]"></a>TIM3_IRQHandler</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, stm32f3xx_it.o(i.TIM3_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = TIM3_IRQHandler &rArr; GoToStandbyMode &rArr; LL_mDelay
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TIM3_IRQHandler &rArr; GoToStandbyMode &rArr; LL_mDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_mDelay
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GoToStandbyMode
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
-</UL>
-<P><STRONG><a name="[30]"></a>TIM6_DAC1_IRQHandler</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, stm32f3xx_it.o(i.TIM6_DAC1_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f334x8.o(RESET)
 </UL>
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f3xx_it.o(i.UsageFault_Handler))
@@ -732,11 +725,11 @@ Global Symbols
 
 <P><STRONG><a name="[56]"></a>delayNs</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, st7735.o(i.delayNs))
 <BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GoToStandbyMode
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
 </UL>
 
 <P><STRONG><a name="[94]"></a>delaySetNs</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, st7735.o(i.delaySetNs))
-<BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
+<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
 </UL>
 
 <P><STRONG><a name="[58]"></a>lcd_st7735s_CS_0</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, st7735.o(i.lcd_st7735s_CS_0))
@@ -751,109 +744,110 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GoToStandbyMode
 </UL>
 
-<P><STRONG><a name="[87]"></a>lcd_st7735s_at</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, st7735.o(i.lcd_st7735s_at))
-<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = lcd_st7735s_at &rArr; lcd_st7735s_send_cmd
+<P><STRONG><a name="[86]"></a>lcd_st7735s_at</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, st7735.o(i.lcd_st7735s_at))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = lcd_st7735s_at &rArr; lcd_st7735s_send_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_img8
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_fillrect
 </UL>
 
 <P><STRONG><a name="[54]"></a>lcd_st7735s_fillrect</STRONG> (Thumb, 70 bytes, Stack size 28 bytes, st7735.o(i.lcd_st7735s_fillrect))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = lcd_st7735s_fillrect &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_cmd
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = lcd_st7735s_fillrect &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_at
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_at
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayOut
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
 </UL>
 
 <P><STRONG><a name="[52]"></a>lcd_st7735s_img8</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, st7735.o(i.lcd_st7735s_img8))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = lcd_st7735s_img8 &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_cmd
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = lcd_st7735s_img8 &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_putpix
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_at
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_putpix
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_at
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayOut
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
 </UL>
 
-<P><STRONG><a name="[8a]"></a>lcd_st7735s_init</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, st7735.o(i.lcd_st7735s_init))
+<P><STRONG><a name="[89]"></a>lcd_st7735s_init</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, st7735.o(i.lcd_st7735s_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = lcd_st7735s_init &rArr; LL_mDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_mDelay
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayNs
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
 </UL>
-<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
+<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7735_StartUp
 </UL>
 
-<P><STRONG><a name="[89]"></a>lcd_st7735s_putpix</STRONG> (Thumb, 20 bytes, Stack size 4 bytes, st7735.o(i.lcd_st7735s_putpix))
+<P><STRONG><a name="[88]"></a>lcd_st7735s_putpix</STRONG> (Thumb, 20 bytes, Stack size 4 bytes, st7735.o(i.lcd_st7735s_putpix))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = lcd_st7735s_putpix &rArr; lcd_st7735s_send_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
 </UL>
 <BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_img8
 </UL>
 
-<P><STRONG><a name="[8b]"></a>lcd_st7735s_send</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, st7735.o(i.lcd_st7735s_send))
-<BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
+<P><STRONG><a name="[8a]"></a>lcd_st7735s_send</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, st7735.o(i.lcd_st7735s_send))
+<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_data
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send_cmd
 </UL>
 
 <P><STRONG><a name="[59]"></a>lcd_st7735s_send_cmd</STRONG> (Thumb, 12 bytes, Stack size 4 bytes, st7735.o(i.lcd_st7735s_send_cmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = lcd_st7735s_send_cmd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send
 </UL>
 <BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GoToStandbyMode
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_img8
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_fillrect
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_at
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_at
 </UL>
 
-<P><STRONG><a name="[88]"></a>lcd_st7735s_send_data</STRONG> (Thumb, 16 bytes, Stack size 4 bytes, st7735.o(i.lcd_st7735s_send_data))
+<P><STRONG><a name="[87]"></a>lcd_st7735s_send_data</STRONG> (Thumb, 16 bytes, Stack size 4 bytes, st7735.o(i.lcd_st7735s_send_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = lcd_st7735s_send_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_send
 </UL>
-<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_putpix
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_putpix
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_fillrect
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_at
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_at
 </UL>
 
-<P><STRONG><a name="[3c]"></a>main</STRONG> (Thumb, 328 bytes, Stack size 8 bytes, main.o(i.main))
+<P><STRONG><a name="[3c]"></a>main</STRONG> (Thumb, 344 bytes, Stack size 8 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = main &rArr; MX_USART1_UART_Init &rArr; LL_USART_Init &rArr; LL_RCC_GetUSARTClockFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartUpConfig
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ScanButton
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SleepAfterWatchDog
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ScanButton
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ResetTIM_Sleep
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_IWDG_Init
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_DMA_Init
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_CRC_Init
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_CRC_Init
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayOut
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_GetPriorityGrouping
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EncodePriority
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_GetPriorityGrouping
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EncodePriority
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[83]"></a>rs485_StartUp</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, rs485.o(i.rs485_StartUp))
+<P><STRONG><a name="[82]"></a>rs485_StartUp</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, rs485.o(i.rs485_StartUp))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = rs485_StartUp
 </UL>
 <BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_TX_Stop
@@ -864,10 +858,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartUpConfig
 </UL>
 
-<P><STRONG><a name="[82]"></a>st7735_StartUp</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, st7735.o(i.st7735_StartUp))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = st7735_StartUp &rArr; lcd_st7735s_fillrect &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_cmd
+<P><STRONG><a name="[81]"></a>st7735_StartUp</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, st7735.o(i.st7735_StartUp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = st7735_StartUp &rArr; lcd_st7735s_fillrect &rArr; lcd_st7735s_at &rArr; lcd_st7735s_send_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_init
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_img8
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_st7735s_fillrect
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delaySetNs
@@ -878,21 +872,21 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[8d]"></a>NVIC_EncodePriority</STRONG> (Thumb, 50 bytes, Stack size 12 bytes, main.o(i.NVIC_EncodePriority))
+<P><STRONG><a name="[8c]"></a>NVIC_EncodePriority</STRONG> (Thumb, 50 bytes, Stack size 12 bytes, main.o(i.NVIC_EncodePriority))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = NVIC_EncodePriority
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8f]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, main.o(i.__NVIC_EnableIRQ))
+<P><STRONG><a name="[8e]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, main.o(i.__NVIC_EnableIRQ))
 <BR><BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8c]"></a>__NVIC_GetPriorityGrouping</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, main.o(i.__NVIC_GetPriorityGrouping))
+<P><STRONG><a name="[8b]"></a>__NVIC_GetPriorityGrouping</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, main.o(i.__NVIC_GetPriorityGrouping))
 <BR><BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8e]"></a>__NVIC_SetPriority</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, main.o(i.__NVIC_SetPriority))
+<P><STRONG><a name="[8d]"></a>__NVIC_SetPriority</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, main.o(i.__NVIC_SetPriority))
 <BR><BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -919,63 +913,59 @@ Local Symbols
 <P><STRONG><a name="[6e]"></a>LL_APB1_GRP1_EnableClock</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, tim.o(i.LL_APB1_GRP1_EnableClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LL_APB1_GRP1_EnableClock
 </UL>
-<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 </UL>
 
 <P><STRONG><a name="[6f]"></a>NVIC_EncodePriority</STRONG> (Thumb, 50 bytes, Stack size 12 bytes, tim.o(i.NVIC_EncodePriority))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = NVIC_EncodePriority
 </UL>
-<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 </UL>
 
 <P><STRONG><a name="[71]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, tim.o(i.__NVIC_EnableIRQ))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 </UL>
 
 <P><STRONG><a name="[70]"></a>__NVIC_SetPriority</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, tim.o(i.__NVIC_SetPriority))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 </UL>
 
-<P><STRONG><a name="[77]"></a>LL_DMA_SetChannelPriorityLevel</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetChannelPriorityLevel))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<P><STRONG><a name="[76]"></a>LL_DMA_SetChannelPriorityLevel</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetChannelPriorityLevel))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
-<P><STRONG><a name="[76]"></a>LL_DMA_SetDataTransferDirection</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, usart.o(i.LL_DMA_SetDataTransferDirection))
+<P><STRONG><a name="[75]"></a>LL_DMA_SetDataTransferDirection</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, usart.o(i.LL_DMA_SetDataTransferDirection))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LL_DMA_SetDataTransferDirection
 </UL>
-<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
-<P><STRONG><a name="[7a]"></a>LL_DMA_SetMemoryIncMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetMemoryIncMode))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<P><STRONG><a name="[79]"></a>LL_DMA_SetMemoryIncMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetMemoryIncMode))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
-<P><STRONG><a name="[7c]"></a>LL_DMA_SetMemorySize</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetMemorySize))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<P><STRONG><a name="[7b]"></a>LL_DMA_SetMemorySize</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetMemorySize))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
-<P><STRONG><a name="[78]"></a>LL_DMA_SetMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetMode))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<P><STRONG><a name="[77]"></a>LL_DMA_SetMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetMode))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
-<P><STRONG><a name="[79]"></a>LL_DMA_SetPeriphIncMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetPeriphIncMode))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<P><STRONG><a name="[78]"></a>LL_DMA_SetPeriphIncMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetPeriphIncMode))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
-<P><STRONG><a name="[7b]"></a>LL_DMA_SetPeriphSize</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetPeriphSize))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<P><STRONG><a name="[7a]"></a>LL_DMA_SetPeriphSize</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usart.o(i.LL_DMA_SetPeriphSize))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
-<P><STRONG><a name="[7f]"></a>LL_GPIO_IsInputPinSet</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, periphery.o(i.LL_GPIO_IsInputPinSet))
-<BR><BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ScanButton
+<P><STRONG><a name="[7e]"></a>LL_GPIO_IsInputPinSet</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, periphery.o(i.LL_GPIO_IsInputPinSet))
+<BR><BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ScanButton
 </UL>
 <P>
 <H3>

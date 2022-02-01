@@ -31,6 +31,7 @@ extern "C" {
 
 #include "stm32f3xx_ll_crc.h"
 #include "stm32f3xx_ll_dma.h"
+#include "stm32f3xx_ll_iwdg.h"
 #include "stm32f3xx_ll_rcc.h"
 #include "stm32f3xx_ll_bus.h"
 #include "stm32f3xx_ll_system.h"
@@ -56,7 +57,7 @@ extern "C" {
 #include "digits.h"
 //#include "font7x15.h"
 #include "st7735.h"
-#include "seg_display.h"
+//#include "seg_display.h"
 #include "power.h"
 #include "rs485.h"
 #include "config.h"
@@ -161,5 +162,3 @@ void Convert2Array(uint8_t num);
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

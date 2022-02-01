@@ -39,6 +39,14 @@ void DebugOnStandByMode(void)
 void GoToStandbyMode(void)
 /*----------------------------------------------------------------*/
 {
+  LL_PWR_EnableWakeUpPin(LL_PWR_WAKEUP_PIN2);
+  
+  LL_IWDG_EnableWriteAccess(IWDG);
+  LL_IWDG_SetPrescaler(IWDG, LL_IWDG_PRESCALER_256);
+  LL_IWDG_SetReloadCounter(IWDG, 0xFFFF);
+  LL_IWDG_SetWindow(IWDG, 0xFFFF);
+  LL_IWDG_DisableWriteAccess(IWDG);
+  
   LL_GPIO_ResetOutputPin(Seg_c_Disp_BackLight_GPIO_Port, Seg_c_Disp_BackLight_Pin);
   delayNs();						// пауза
   lcd_st7735s_RES_1();	// RST=1
@@ -49,7 +57,7 @@ void GoToStandbyMode(void)
   lcd_st7735s_CS_1();
 	//DebugOnStandByMode();
 //  irq_disable();
-
+  LL_IWDG_ReloadCounter(IWDG);
 /* с точки зрения ядра Cortex-M, что Stop, что Standby - это режим Deep Sleep */
 /* поэтому надо в ядре включить Deep Sleep */
 //	SCB->SCR |=  SCB_SCR_SLEEPDEEP_Msk;
@@ -105,6 +113,21 @@ void ResetTIM_Sleep(void)
                                                 STOP_BUTTON_FLAG          ));
   if ( NumFlagSleepDeny != 0 )
   {
-    LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
+    LL_TIM_SetCounter(TIM_Sleep, 0x1E);
+  }
+}
+/*----------------------------------------------------------------*/
+void SleepAfterWatchDog(void)
+/*----------------------------------------------------------------*/
+{
+  //Если проснулись по пину wakeUp
+  if ((PWR->CSR & PWR_CSR_WUF_Msk) == 1)
+  {
+    //Сбрасываем флаг пробуждения
+    PWR->CR = PWR_CR_CWUF_Msk;
+  }
+  else /*if ((PWR->CSR & PWR_CSR_EWUP2_Msk) == 1)*/
+  {
+    GoToStandbyMode();
   }
 }

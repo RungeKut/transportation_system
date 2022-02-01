@@ -11,6 +11,7 @@ remote_control_display\rs485.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 remote_control_display\rs485.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 remote_control_display\rs485.o: ../Drivers/CMSIS/Device/ST/STM32F3xx/Include/system_stm32f3xx.h
 remote_control_display\rs485.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_dma.h
+remote_control_display\rs485.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_iwdg.h
 remote_control_display\rs485.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_rcc.h
 remote_control_display\rs485.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_bus.h
 remote_control_display\rs485.o: ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_system.h
@@ -29,7 +30,6 @@ remote_control_display\rs485.o: ../Core/Inc/spi.h
 remote_control_display\rs485.o: ../Core/Inc/gpio.h
 remote_control_display\rs485.o: ..\User\Inc\digits.h
 remote_control_display\rs485.o: ..\User\Inc\st7735.h
-remote_control_display\rs485.o: ..\User\Inc\seg_display.h
 remote_control_display\rs485.o: ..\User\Inc\power.h
 remote_control_display\rs485.o: ..\User\Inc\rs485.h
 remote_control_display\rs485.o: ..\User\Inc\config.h

@@ -24,9 +24,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-
-volatile uint8_t digit = 1;
-volatile uint8_t whitingCounter = 1;
 volatile uint8_t TIM3_FLAG = 0;
 
 /* USER CODE END Includes */
@@ -294,7 +291,7 @@ void TIM2_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
-	if (LL_TIM_IsActiveFlag_UPDATE(TIM3))
+  if (LL_TIM_IsActiveFlag_UPDATE(TIM3))
 	{
 		LL_TIM_ClearFlag_UPDATE(TIM3);
 		if (TIM3_FLAG == 0)
@@ -314,30 +311,7 @@ void TIM3_IRQHandler(void)
   /* USER CODE END TIM3_IRQn 1 */
 }
 
-/**
-  * @brief This function handles TIM6 global and DAC1 underrun error interrupts.
-  */
-void TIM6_DAC1_IRQHandler(void)
-{
-  /* USER CODE BEGIN TIM6_DAC1_IRQn 0 */
-if (LL_TIM_IsActiveFlag_UPDATE(TIM6))
-	{
-		LL_TIM_ClearFlag_UPDATE(TIM6);
-		
-		whitingCounter++;
-		if (whitingCounter >= 11)
-		{
-			whitingCounter = 1;
-		}
-	}
-  /* USER CODE END TIM6_DAC1_IRQn 0 */
-
-  /* USER CODE BEGIN TIM6_DAC1_IRQn 1 */
-
-  /* USER CODE END TIM6_DAC1_IRQn 1 */
-}
-
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
