@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Project_Dynamic_razgruz_L072SU\Project_Dynamic_razgruz_L072SU.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Project_Dynamic_razgruz_L072SU\Project_Dynamic_razgruz_L072SU.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Jan 27 15:11:32 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Jan 31 17:53:59 2022
 <BR><P>
 <H3>Maximum Stack Usage =        216 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -376,6 +376,7 @@ Global Symbols
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ina239_StartUp
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_StartUp
 </UL>
 
 <P><STRONG><a name="[43]"></a>ButtonFlagControl</STRONG> (Thumb, 582 bytes, Stack size 24 bytes, periphery.o(i.ButtonFlagControl))
@@ -420,7 +421,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[52]"></a>Encoder_Speed_GET</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, bdc_motor.o(i.Encoder_Speed_GET))
+<P><STRONG><a name="[52]"></a>Encoder_Speed_GET</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, bdc_motor.o(i.Encoder_Speed_GET))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Encoder_Speed_GET &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
@@ -850,7 +851,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c3]"></a>MX_IWDG_Init</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, iwdg.o(i.MX_IWDG_Init))
+<P><STRONG><a name="[c3]"></a>MX_IWDG_Init</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, iwdg.o(i.MX_IWDG_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1153,8 +1154,8 @@ Global Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Receive
 </UL>
 
-<P><STRONG><a name="[44]"></a>bdc_OFF</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, bdc_motor.o(i.bdc_OFF))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = bdc_OFF &rArr; LL_mDelay
+<P><STRONG><a name="[44]"></a>bdc_OFF</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, bdc_motor.o(i.bdc_OFF))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = bdc_OFF &rArr; LL_mDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_mDelay
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDutyCycleBDC
@@ -1162,7 +1163,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ButtonFlagControl
 </UL>
 
-<P><STRONG><a name="[47]"></a>bdc_ON</STRONG> (Thumb, 180 bytes, Stack size 24 bytes, bdc_motor.o(i.bdc_ON))
+<P><STRONG><a name="[47]"></a>bdc_ON</STRONG> (Thumb, 284 bytes, Stack size 24 bytes, bdc_motor.o(i.bdc_ON))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = bdc_ON &rArr; CurrentBDC_GET &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CurrentBDC_GET
@@ -1228,12 +1229,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ina239_StartUp
 </UL>
 
-<P><STRONG><a name="[b0]"></a>flash_StartUp</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, flash_work.o(i.flash_StartUp))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = flash_StartUp &rArr; flashPage_Init &rArr; flashPage_erase &rArr; HAL_FLASHEx_Erase &rArr; FLASH_WaitForLastOperation &rArr; FLASH_SetErrorCode
+<P><STRONG><a name="[b0]"></a>flash_StartUp</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, flash_work.o(i.flash_StartUp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = flash_StartUp &rArr; BatPercentCalc &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Unlock
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashPage_read32
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashPage_Init
+<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BatPercentCalc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartUpConfig
 </UL>

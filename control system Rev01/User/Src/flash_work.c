@@ -114,6 +114,7 @@ void flash_StartUp(void)//                                                   ┃
   if (temp != 0.0)
   {
     RemainBatCapacity_mWh = temp;
+    BatPercentCalc();
   }
   GLOBAL_FLASH_FLAG |= EnableWrite_FLASH;
 }

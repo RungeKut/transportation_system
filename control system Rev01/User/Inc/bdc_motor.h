@@ -4,11 +4,11 @@
 #include "main.h"
 
 extern volatile uint32_t quantityCounter;
-extern uint16_t Encoder_Period;
-extern uint16_t Encoder_DutyCicle;
-extern uint32_t Encoder_Freqency;
-extern uint16_t DutyToBDC;
-extern uint32_t Encoder_Speed;
+extern volatile uint16_t Encoder_Period;
+extern volatile uint16_t Encoder_DutyCicle;
+extern volatile uint32_t Encoder_Freqency;
+extern volatile uint16_t DutyToBDC;
+extern volatile uint32_t Encoder_Speed;
 
 /* BEGIN Prototypes */
 void bdc_StartUp(void);

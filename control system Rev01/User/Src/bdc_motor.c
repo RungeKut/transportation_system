@@ -1,11 +1,11 @@
 #include "bdc_motor.h"
 #include "main.h"
 
-uint16_t Encoder_Period = 0;    //*0.1ms
-uint16_t Encoder_DutyCicle = 0;  //*0.1ms
-uint32_t Encoder_Freqency = 0;  //mHz
-uint16_t DutyToBDC = 0;
-uint32_t Encoder_Speed = 0; // см/сек
+volatile uint16_t Encoder_Period = 0;    //*0.1ms
+volatile uint16_t Encoder_DutyCicle = 0;  //*0.1ms
+volatile uint32_t Encoder_Freqency = 0;  //mHz
+volatile uint16_t DutyToBDC = 0;
+volatile uint32_t Encoder_Speed = 0; // см/сек
 volatile uint32_t quantityCounter = 0;
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
@@ -139,7 +139,7 @@ void Encoder_Speed_GET(void)//                                               ┃
   uint32_t temp_speed;
   Encoder_Freqency = 10000000 / Encoder_Period; //mHz
   temp_speed = Encoder_Freqency * 3142 * ENCODER_DIAM / ENCODER_HOLES / 1000000;
-  if (temp_speed <= MAX_SPEED_BDC)
+  if (temp_speed <= MAX_SPEED_BDC * 10)
   {
     Encoder_Speed = temp_speed;
   }
@@ -155,12 +155,12 @@ void bdc_ON(void)//                                                          ┃
     LL_TIM_SetPrescaler(BDC_TIM, BDC_PWM_Freqency);
     BOOST_ENABLE;
     DC_DC_SW_ENABLE;
-//    LL_TIM_EnableIT_CC1(ENCODER_TIM);
+    LL_TIM_EnableIT_CC1(ENCODER_TIM);
 //    LL_TIM_CC_EnableChannel(ENCODER_TIM, ENCODER_DirectCH);
-//    LL_TIM_EnableIT_CC2(ENCODER_TIM);
+    LL_TIM_EnableIT_CC2(ENCODER_TIM);
 //    LL_TIM_CC_EnableChannel(ENCODER_TIM, ENCODER_IndirectCH);
 //    LL_TIM_EnableCounter(ENCODER_TIM);
-//    LL_TIM_EnableIT_UPDATE(ENCODER_TIM);
+    LL_TIM_EnableIT_UPDATE(ENCODER_TIM);
 //    __NVIC_EnableIRQ(ENCODER_IRQ);
     SetDutyCycleBDC(BDC_TIM, 0);
     LL_TIM_EnableCounter(BDC_TIM);
@@ -173,24 +173,28 @@ void bdc_ON(void)//                                                          ┃
     Encoder_Speed_GET();
     Sleep_Reset();
     SetDutyCycleBDC(BDC_TIM, DutyToBDC);
-    if ((Encoder_Speed < speed) && (DutyToBDC + 3 < BDCMaxDutyCicle))
+  
+    if ((Encoder_Speed < speed) & (DutyToBDC + 3 < BDCMaxDutyCicle))
     {
       DutyToBDC = DutyToBDC + 3;
     }
-    else if ((Encoder_Speed == speed) && (DutyToBDC < BDCMaxDutyCicle))
+    else if ((Encoder_Speed == speed) & (DutyToBDC < BDCMaxDutyCicle))
     {
       DutyToBDC++;
     }
-    else if ((Encoder_Speed > speed) && (DutyToBDC > BDCMinDutyCicle + 2))
+    else if ((Encoder_Speed > speed) & (DutyToBDC > BDCMinDutyCicle + 2))
     {
       DutyToBDC = DutyToBDC - 2;
     }
-    else if ((DutyToBDC == 0) || (DutyToBDC > BDCMaxDutyCicle))
+    else if ((DutyToBDC == 0) | (DutyToBDC > BDCMaxDutyCicle))
     {
       Encoder_Speed = 0;
       DutyToBDC = 0;
     }
-  
+    else
+    {
+      DutyToBDC = DutyToBDC + 5;
+    }
 }
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
 //Выключение периферии                                                       ┃
@@ -202,13 +206,15 @@ void bdc_OFF(void)//                                                         ┃
     BOOST_DISABLE;
     DC_DC_SW_DISABLE;
     Encoder_Speed = 0;
+    Encoder_Period = 0;
+    Encoder_DutyCicle = 0;
     DutyToBDC = 0;
-//    LL_TIM_DisableIT_CC1(ENCODER_TIM);
+    LL_TIM_DisableIT_CC1(ENCODER_TIM);
 //    LL_TIM_CC_DisableChannel(ENCODER_TIM, ENCODER_DirectCH);
-//    LL_TIM_DisableIT_CC2(ENCODER_TIM);
+    LL_TIM_DisableIT_CC2(ENCODER_TIM);
 //    LL_TIM_CC_DisableChannel(ENCODER_TIM, ENCODER_IndirectCH);
 //    LL_TIM_DisableCounter(ENCODER_TIM);
-//    LL_TIM_DisableIT_UPDATE(ENCODER_TIM);
+    LL_TIM_DisableIT_UPDATE(ENCODER_TIM);
 //    __NVIC_DisableIRQ(ENCODER_IRQ);
     SetDutyCycleBDC(BDC_TIM, 0);
     LL_TIM_CC_DisableChannel(BDC_TIM, BDC_TIM_CH);
