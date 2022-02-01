@@ -43,8 +43,8 @@
 #define COUNT_NUM_STEP_FLAG        0x00040000 //Ведется подсчет кол-ва шагов м/у концевыми выключателями
 #define STANDBY_MODE_FLAG          0x00080000 //Ждущий режим
 
-#define SLEEP_MODE_FLAG            0x00100000 //Спящий режим
-#define BDC_ON_FLAG                0x00200000 //Двигатель каретки работает
+#define BDC_PWM_ON_FLAG            0x00100000 //Двигатель каретки работает
+#define BDC_ON_FLAG                0x00200000 //Реле направления включены
 #define BOOST_ENABLE_FLAG          0x00400000 //DC/DC BOOST Включен
 #define DC_DC_SW_FLAG              0x00800000 //Силовой ключ замкнут
 

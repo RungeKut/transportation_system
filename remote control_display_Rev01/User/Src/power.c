@@ -1,5 +1,8 @@
 #include "power.h"
 #include "main.h"
+
+volatile uint8_t NumFlagSleepDeny = 0; //Количество флагов мешающих сну
+
 /*----------------------------------------------------------------*/
 void irq_enable(void)
 /*----------------------------------------------------------------*/
@@ -82,4 +85,26 @@ void GoToStandbyMode(void)
 /* после просыпания восстановили прерывания */
 //irq_restore(state);
 //	irq_enable();
+}
+/*----------------------------------------------------------------*/
+void ResetTIM_Sleep(void)
+/*----------------------------------------------------------------*/
+{
+ NumFlagSleepDeny = (_Bool)( GLOBAL_FLAG_RX & ( BUT_UP_FLAG               |
+                                                BUT_DOWN_FLAG             |
+                                                BUT_FORWARD_FLAG          |
+                                                BUT_BACKWARD_FLAG         |
+                                                BUT_STRONG_FLAG           |
+                                                BUT_WEAK_FLAG             |
+                                                BUT_SPEED_UP_FLAG         |
+                                                BUT_SPEED_DOWN_FLAG       |
+                                                TEST_SCREW_FLAG           |
+                                                INITIALIZATION_FLAG       |
+                                                STOPING_FLAG              |
+                                                CARRIAGE_CALIBRATION_FLAG |
+                                                STOP_BUTTON_FLAG          ));
+  if ( NumFlagSleepDeny != 0 )
+  {
+    LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
+  }
 }

@@ -135,6 +135,7 @@ int main(void)
   {
     ScanButton();
     DisplayOut(battery, speed, weight);
+    ResetTIM_Sleep();
     
     /* USER CODE END WHILE */
 

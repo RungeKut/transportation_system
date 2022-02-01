@@ -14,7 +14,6 @@ void ScanButton(void) {
   if (LL_GPIO_IsInputPinSet(SA1_GPIO_Port, SA1_Pin) == 1)
   {
     GLOBAL_FLAG_TX |= BUT_DOWN_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 	}
   else
   {
@@ -22,7 +21,6 @@ void ScanButton(void) {
 	}
   if	(LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_UP_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 	}
   else
   {
@@ -30,7 +28,6 @@ void ScanButton(void) {
 	}
   if	(LL_GPIO_IsInputPinSet(SA3_GPIO_Port, SA3_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_BACKWARD_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 	}
   else
   {
@@ -38,7 +35,6 @@ void ScanButton(void) {
 	}
   if	(LL_GPIO_IsInputPinSet(SA4_GPIO_Port, SA4_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_FORWARD_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 	}
   else
   {
@@ -46,7 +42,6 @@ void ScanButton(void) {
 	}
   if	(LL_GPIO_IsInputPinSet(SA5_GPIO_Port, SA5_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_WEAK_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 	}
   else
   {
@@ -54,7 +49,6 @@ void ScanButton(void) {
 	}
   if	(LL_GPIO_IsInputPinSet(SA6_GPIO_Port, SA6_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_STRONG_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 	}
   else
   {
@@ -62,7 +56,6 @@ void ScanButton(void) {
 	}
   if	(LL_GPIO_IsInputPinSet(SA7_GPIO_Port, SA7_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_SPEED_DOWN_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 	}
   else
   {
@@ -70,7 +63,6 @@ void ScanButton(void) {
 	}
   if	(LL_GPIO_IsInputPinSet(SA8_GPIO_Port, SA8_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_SPEED_UP_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 	}
   else
   {
@@ -78,18 +70,17 @@ void ScanButton(void) {
 	}
 /*		if	(LL_GPIO_IsInputPinSet(SA9_GPIO_Port, SA9_Pin) == 1) {
 		GLOBAL_FLAG_RX |= BUT_-_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 		keystrokeCounter++;
 	} else {
 		GLOBAL_FLAG_RX &= ~BUT_-_FLAG;
 	}
 		if	(LL_GPIO_IsInputPinSet(SA10_GPIO_Port, SA10_Pin) == 1) {
 		GLOBAL_FLAG_RX |= BUT_-_FLAG;
-		LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
 		keystrokeCounter++;
 	} else {
 		GLOBAL_FLAG_RX &= ~BUT_-_FLAG;
 	}*/
+  
 	return;
 }
 

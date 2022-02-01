@@ -3,11 +3,12 @@
 
 #include "main.h"
 
-
+extern volatile uint8_t NumFlagSleepDeny;
 
 void irq_enable(void);
 void irq_disable(void);
 void DebugOnStandByMode(void);
 void GoToStandbyMode(void);
+void ResetTIM_Sleep(void);
 
 #endif /* POWER_H */
