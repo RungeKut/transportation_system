@@ -149,12 +149,12 @@ void Encoder_Speed_GET(void)//                                               ┃
 void bdc_ON(void)//                                                          ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
-  if (!(GLOBAL_FLAG_TX & BDC_ON_FLAG))
+  if (!(GLOBAL_FLAG_TX & BDC_PWM_ON_FLAG))
   {
 //    bdc_TIM2_Init();
     LL_TIM_SetPrescaler(BDC_TIM, BDC_PWM_Freqency);
     BOOST_ENABLE;
-    DC_DC_SW_ENABLE;
+//    DC_DC_SW_ENABLE;
     LL_TIM_EnableIT_CC1(ENCODER_TIM);
 //    LL_TIM_CC_EnableChannel(ENCODER_TIM, ENCODER_DirectCH);
     LL_TIM_EnableIT_CC2(ENCODER_TIM);
@@ -165,7 +165,7 @@ void bdc_ON(void)//                                                          ┃
     SetDutyCycleBDC(BDC_TIM, 0);
     LL_TIM_EnableCounter(BDC_TIM);
     LL_TIM_CC_EnableChannel(BDC_TIM, BDC_TIM_CH);
-    GLOBAL_FLAG_TX |= BDC_ON_FLAG;
+    GLOBAL_FLAG_TX |= BDC_PWM_ON_FLAG;
     Encoder_Speed = 0;
   }
 
@@ -178,7 +178,7 @@ void bdc_ON(void)//                                                          ┃
     {
       DutyToBDC = DutyToBDC + 3;
     }
-    else if ((Encoder_Speed == speed) & (DutyToBDC < BDCMaxDutyCicle))
+    else if ((Encoder_Speed <= speed) & (DutyToBDC < BDCMaxDutyCicle))
     {
       DutyToBDC++;
     }
@@ -193,7 +193,7 @@ void bdc_ON(void)//                                                          ┃
     }
     else
     {
-      DutyToBDC = DutyToBDC + 5;
+//      DutyToBDC = DutyToBDC + 5;
     }
 }
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
@@ -218,58 +218,23 @@ void bdc_OFF(void)//                                                         ┃
 //    __NVIC_DisableIRQ(ENCODER_IRQ);
     SetDutyCycleBDC(BDC_TIM, 0);
     LL_TIM_CC_DisableChannel(BDC_TIM, BDC_TIM_CH);
-    LL_TIM_DisableCounter(BDC_TIM);
-    LL_mDelay(50);
     LL_GPIO_ResetOutputPin(Relay_1_GPIO_Port, Relay_1_Pin);
     LL_GPIO_ResetOutputPin(Relay_2_GPIO_Port, Relay_2_Pin);
+    GLOBAL_FLAG_TX &= ~BDC_PWM_ON_FLAG;
     GLOBAL_FLAG_TX &= ~BDC_ON_FLAG;
     
 //    LL_TIM_DeInit(TIM2);
   }
 }
-void bdc_TIM2_Init(void)
-{  
-  LL_TIM_InitTypeDef TIM_InitStruct = {0};
-
-  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-  /* Peripheral clock enable */
-  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2);
-
-  LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);
-  /**TIM2 GPIO Configuration
-  PA5   ------> TIM2_CH1
-  */
-  GPIO_InitStruct.Pin = Encoder_Pin;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
-  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
-  GPIO_InitStruct.Alternate = LL_GPIO_AF_5;
-  LL_GPIO_Init(Encoder_GPIO_Port, &GPIO_InitStruct);
-
-  NVIC_SetPriority(TIM2_IRQn, 2);
-  NVIC_EnableIRQ(TIM2_IRQn);
-
-  TIM_InitStruct.Prescaler = 3199;
-  TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
-  TIM_InitStruct.Autoreload = 65535;
-  TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
-  LL_TIM_Init(TIM2, &TIM_InitStruct);
-  LL_TIM_DisableARRPreload(TIM2);
-  LL_TIM_SetClockSource(TIM2, LL_TIM_CLOCKSOURCE_INTERNAL);
-  LL_TIM_SetTriggerInput(TIM2, LL_TIM_TS_TI1FP1);
-  LL_TIM_SetSlaveMode(TIM2, LL_TIM_SLAVEMODE_RESET);
-  LL_TIM_IC_SetFilter(TIM2, LL_TIM_CHANNEL_CH1, LL_TIM_IC_FILTER_FDIV1);
-  LL_TIM_IC_SetPolarity(TIM2, LL_TIM_CHANNEL_CH1, LL_TIM_IC_POLARITY_RISING);
-  LL_TIM_DisableIT_TRIG(TIM2);
-  LL_TIM_DisableDMAReq_TRIG(TIM2);
-  LL_TIM_SetTriggerOutput(TIM2, LL_TIM_TRGO_RESET);
-  LL_TIM_DisableMasterSlaveMode(TIM2);
-  LL_TIM_IC_SetActiveInput(TIM2, LL_TIM_CHANNEL_CH1, LL_TIM_ACTIVEINPUT_DIRECTTI);
-  LL_TIM_IC_SetPrescaler(TIM2, LL_TIM_CHANNEL_CH1, LL_TIM_ICPSC_DIV1);
-  LL_TIM_IC_SetActiveInput(TIM2, LL_TIM_CHANNEL_CH2, LL_TIM_ACTIVEINPUT_INDIRECTTI);
-  LL_TIM_IC_SetPrescaler(TIM2, LL_TIM_CHANNEL_CH2, LL_TIM_ICPSC_DIV1);
-  LL_TIM_IC_SetFilter(TIM2, LL_TIM_CHANNEL_CH2, LL_TIM_IC_FILTER_FDIV1);
-  LL_TIM_IC_SetPolarity(TIM2, LL_TIM_CHANNEL_CH2, LL_TIM_IC_POLARITY_FALLING);
-}
+///*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
+//// (вход, установка, п, и, д, период в секундах, мин.выход, макс. выход)     ┃
+//uint16_t computePID(float input, float setpoint, float kp, float ki, float kd, float dt, uint16_t minOut, uint16_t maxOut)//                                                         ┃
+///*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
+//{
+//  float err = setpoint - input;
+//  static float integral = 0, prevErr = 0;
+//  integral = constrain(integral + (float)err * dt * ki, minOut, maxOut);
+//  float D = (err - prevErr) / dt;
+//  prevErr = err;
+//  return constrain(err * kp + integral + D * kd, minOut, maxOut);
+//}

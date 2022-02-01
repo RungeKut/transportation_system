@@ -65,8 +65,6 @@ RingBuffer_StatusTypeDef RingBuffer_trywrite(void)
   RingBuffer[RingBuffer_tail] = LL_USART_ReceiveData8(USART1);
   //Увеличиваем хвост на 1
   RingBuffer_tail = (RingBuffer_tail + 1) & (RingBuffer_size - 1);
-  if ((RingBuffer_tail == 0) && (bdcSpeed_flag > 0))
-    bdcSpeed_flag--;
   return RINGBUFFER_OK;
 }
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

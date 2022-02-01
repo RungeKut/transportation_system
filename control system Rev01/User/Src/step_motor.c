@@ -136,6 +136,13 @@ void MOTOR_START_UP(TIM_TypeDef *TIMA, TIM_TypeDef *TIMS)//                  ┃
         ON_STEP_TIMER(TIMA, TIMS);
         GLOBAL_FLAG_TX |= MOVE_UP_FLAG;
       }
+  else if (( Freq_step == MIN_FREQ ) &&
+           ( GLOBAL_FLAG_TX & STOPING_FLAG))
+  {
+    STEPDRIVER_DIRECTION_UP;
+    GLOBAL_FLAG_TX |= DIRECTION_FLAG;
+    GLOBAL_FLAG_TX &= ~STOPING_FLAG;
+  }
   return;
 }
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
@@ -167,6 +174,13 @@ void MOTOR_START_DOWN(TIM_TypeDef *TIMA, TIM_TypeDef *TIMS)//                ┃
         ON_STEP_TIMER(TIMA, TIMS);
         GLOBAL_FLAG_TX |= MOVE_DOWN_FLAG;
       }
+  else if (( Freq_step == MIN_FREQ ) &&
+           ( GLOBAL_FLAG_TX & STOPING_FLAG))
+  {
+    STEPDRIVER_DIRECTION_DOWN;
+    GLOBAL_FLAG_TX &= ~DIRECTION_FLAG;
+    GLOBAL_FLAG_TX &= ~STOPING_FLAG;
+  }
   return;
 }
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/

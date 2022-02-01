@@ -21,7 +21,7 @@ extern volatile Button_StatusTypeDef Button_Status;
 /**********End**********Batton_Status********************/
 
 extern volatile uint8_t NumButPressed;
-extern volatile uint8_t bdcSpeed_flag;
+extern volatile uint32_t delayCounter_flag;
 
 /* BEGIN Prototypes */
 void irq_enable(void);

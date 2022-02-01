@@ -2,7 +2,7 @@
 #include "main.h"
 volatile Button_StatusTypeDef Button_Status = BUT_OFF;
 volatile uint8_t NumButPressed = 0; //Количество нажатых кнопок
-volatile uint8_t bdcSpeed_flag = 0;
+volatile uint32_t delayCounter_flag = 0;
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
 //Разрешить прерывания																											 ┃
 void irq_enable(void)//																											 ┃
@@ -51,7 +51,7 @@ void SwitchControl(void)//                                                   ┃
   {
     GLOBAL_FLAG_TX |= LIMIT_SWITCH_UP_FLAG;
   }
-  else
+  else if ( NumButPressed == 0 )
   {
     GLOBAL_FLAG_TX &= ~LIMIT_SWITCH_UP_FLAG;
   }
@@ -60,7 +60,7 @@ void SwitchControl(void)//                                                   ┃
   {
     GLOBAL_FLAG_TX |= LIMIT_SWITCH_DOWN_FLAG;
   }
-  else
+  else if ( NumButPressed == 0 )
   {
     GLOBAL_FLAG_TX &= ~LIMIT_SWITCH_DOWN_FLAG;
   }
@@ -69,7 +69,7 @@ void SwitchControl(void)//                                                   ┃
   {
     GLOBAL_FLAG_TX |= LIMIT_SWITCH_FORWARD_FLAG;
   }
-  else
+  else if ( NumButPressed == 0 )
   {
     GLOBAL_FLAG_TX &= ~LIMIT_SWITCH_FORWARD_FLAG;
   }
@@ -78,7 +78,7 @@ void SwitchControl(void)//                                                   ┃
   {
     GLOBAL_FLAG_TX |= LIMIT_SWITCH_BACKWARD_FLAG;
   }
-  else
+  else if ( NumButPressed == 0 )
   {
     GLOBAL_FLAG_TX &= ~LIMIT_SWITCH_BACKWARD_FLAG;
   }
@@ -134,11 +134,8 @@ void ButtonFlagControl(void)//                                               ┃
     {
       Button_Status = BUT_DENY;
     }
-    //Флаги для ускорения изменения скорости и для ограницения количества вызова функций
-    //bdc_speed_up и bdc_speed_down. Синхронизировано с оборотами кольцевого буфера.
+    //Сброс флага ускорения изменения скорости каретки
     quantityCounter = 0;
-    bdcSpeed_flag = 0;
-    bdc_OFF();
   }
   
          if (( Button_Status == BUT_UP ) && //Кнопка подъемник вверх
@@ -148,8 +145,8 @@ void ButtonFlagControl(void)//                                               ┃
       LL_GPIO_SetOutputPin(PP_UP_GPIO_Port,PP_UP_Pin);
       Sleep_Reset();
     }
-    else if (( Button_Status == BUT_DOWN ) && //Кнопка подъемник вниз
-             ( Battery_Status != CHARGING ))
+    else if ( Button_Status == BUT_DOWN )/* && //Кнопка подъемник вниз
+             ( Battery_Status != CHARGING ))*/
     {
       GLOBAL_FLAG_TX |= BUT_DOWN_FLAG;
       LL_GPIO_SetOutputPin(PP_DOWN_GPIO_Port,PP_DOWN_Pin);
@@ -157,30 +154,38 @@ void ButtonFlagControl(void)//                                               ┃
     }
     else if ((!( GLOBAL_FLAG_TX & LIMIT_SWITCH_FORWARD_FLAG )) && //Кнопка подъемник вперед
                ( Button_Status == BUT_FORWARD                ) &&
-               (bdcSpeed_flag == 0))
+               (delayCounter_flag == 0))
     {
-      bdcSpeed_flag = 1;
-      GLOBAL_FLAG_TX |= BUT_FORWARD_FLAG;
-      if (!(LL_TIM_CC_IsEnabledChannel(BDC_TIM, BDC_TIM_CH)))
+      if (!(GLOBAL_FLAG_TX & BUT_FORWARD_FLAG))
       {
-//      LL_GPIO_SetOutputPin(PP_LEFT_GPIO_Port,PP_LEFT_Pin); //Выход на плату подъемника
+        GLOBAL_FLAG_TX |= BDC_ON_FLAG;
+        DC_DC_SW_ENABLE;
+        //Выход на плату подъемника
+        //LL_GPIO_SetOutputPin(PP_LEFT_GPIO_Port,PP_LEFT_Pin);
         LL_GPIO_SetOutputPin(Relay_1_GPIO_Port, Relay_1_Pin);
-        LL_mDelay(50);
+        delayCounter_flag = 10000;
+        GLOBAL_FLAG_TX |= BUT_FORWARD_FLAG;
+        return;
       }
+      delayCounter_flag = 1000;
       bdc_ON();
     }
     else if ((!( GLOBAL_FLAG_TX & LIMIT_SWITCH_BACKWARD_FLAG )) && //Кнопка подъемник назад
                ( Button_Status == BUT_BACKWARD                ) &&
-               (bdcSpeed_flag == 0))
+               (delayCounter_flag == 0))
     {
-      bdcSpeed_flag = 1;
-      GLOBAL_FLAG_TX |= BUT_BACKWARD_FLAG;
-      if (!(LL_TIM_CC_IsEnabledChannel(BDC_TIM, BDC_TIM_CH)))
+      if (!(GLOBAL_FLAG_TX & BUT_BACKWARD_FLAG))
       {
-//      LL_GPIO_SetOutputPin(PP_RIGHT_GPIO_Port,PP_RIGHT_Pin); //Выход на плату подъемника
+        GLOBAL_FLAG_TX |= BDC_ON_FLAG;
+        DC_DC_SW_ENABLE;
+        //Выход на плату подъемника
+        //LL_GPIO_SetOutputPin(PP_RIGHT_GPIO_Port,PP_RIGHT_Pin);
         LL_GPIO_SetOutputPin(Relay_2_GPIO_Port, Relay_2_Pin);
-        LL_mDelay(50);
+        delayCounter_flag = 10000;
+        GLOBAL_FLAG_TX |= BUT_BACKWARD_FLAG;
+        return;
       }
+      delayCounter_flag = 1000;
       bdc_ON();
     }
     else if ((!( GLOBAL_FLAG_TX & LIMIT_SWITCH_UP_FLAG )) && //Кнопка разгрузка увеличить вес
@@ -188,7 +193,8 @@ void ButtonFlagControl(void)//                                               ┃
                ( Battery_Status != CHARGING ))
     {
       GLOBAL_FLAG_TX |= BUT_STRONG_FLAG;
-      GLOBAL_FLAG_TX &= ~STOPING_FLAG;
+      if (!(GLOBAL_FLAG_TX & DIRECTION_FLAG))
+        GLOBAL_FLAG_TX &= ~STOPING_FLAG;
       MOTOR_START_DOWN(AC_TIM, ST_TIM);
     }
     else if ((!( GLOBAL_FLAG_TX & LIMIT_SWITCH_DOWN_FLAG)) && //Кнопка разгрузка уменьшить вес
@@ -196,37 +202,30 @@ void ButtonFlagControl(void)//                                               ┃
                ( Battery_Status != CHARGING ))
     {
       GLOBAL_FLAG_TX |= BUT_WEAK_FLAG;
-      GLOBAL_FLAG_TX &= ~STOPING_FLAG;
+      if (GLOBAL_FLAG_TX & DIRECTION_FLAG)
+        GLOBAL_FLAG_TX &= ~STOPING_FLAG;
       MOTOR_START_UP(AC_TIM, ST_TIM);
     }
     else if (( Button_Status == BUT_SPEED_UP ) && //Кнопка скорость +
-             ( bdcSpeed_flag == 0))
+             ( delayCounter_flag == 0))
     {
       bdc_speed_up();
       GLOBAL_FLAG_TX &= ~BDC_CURRENT_LIMIT_FLAG;
-      bdcSpeed_flag = 5;
+      delayCounter_flag = 10000;
     }
     else if (( Button_Status == BUT_SPEED_DOWN ) && //Кнопка скорость -
-             ( bdcSpeed_flag == 0))
+             ( delayCounter_flag == 0))
     {
       bdc_speed_down();
       GLOBAL_FLAG_TX &= ~BDC_CURRENT_LIMIT_FLAG;
-      bdcSpeed_flag = 5;
+      delayCounter_flag = 10000;
     }
     else if (( GLOBAL_FLAG_TX & INITIALIZATION_FLAG ) && //Инициализация привода пружины
-             ( NumButPressed == 1 ))
+             (!(GLOBAL_FLAG_TX & STOP_BUTTON_FLAG)))
     {
       Motor_Initialization(AC_TIM, ST_TIM, TIM7);
     }
-//    else if ( GLOBAL_FLAG_TX & CARRIAGE_CALIBRATION_FLAG ) //Калибровка привода пружины
-//    {
-//      Count_Num_Step();
-//    }
-//    else if ( GLOBAL_FLAG_TX & TEST_SCREW_FLAG ) //Тестирование ШВП пружины
-//    {
-//      Test_Screw();
-//    }
-    else
+    else if (delayCounter_flag == 0)
     {
       LL_GPIO_ResetOutputPin(PP_UP_GPIO_Port,PP_UP_Pin);
       LL_GPIO_ResetOutputPin(PP_DOWN_GPIO_Port,PP_DOWN_Pin);
@@ -241,6 +240,10 @@ void ButtonFlagControl(void)//                                               ┃
                         );
       
       MOTOR_STOP(AC_TIM, ST_TIM, TIM2);
+      bdc_OFF();
     }
-    return;
+  //Декремент флага для ограницения количества(частоты) вызова функций
+  if (delayCounter_flag > 0)
+    delayCounter_flag--;
+//  return;
 }
