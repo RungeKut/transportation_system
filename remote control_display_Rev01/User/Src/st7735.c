@@ -560,7 +560,8 @@ void DisplayOut(uint8_t bat, uint8_t spd, uint8_t wgt)
       Display_Status = PREPERING;
     }
   }
-  else if (( LL_TIM_GetCounter(TIM_Sleep) == 20 ) &&
+  else if (( LL_TIM_GetCounter(TIM_Sleep) == 20 )  &&
+           (!(GLOBAL_CHARGE_FLAG & CHARGING_FLAG)) &&
            ( bat <= 10 ))
   {
     if ( Display_Status != LOW_BAT )

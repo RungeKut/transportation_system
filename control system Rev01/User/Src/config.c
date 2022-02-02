@@ -72,6 +72,7 @@ void StartUpConfig(void)//                                                   ┃
   INA_INIT();
   
   BOOST_DISABLE;
+  STEPDRIVER_DISABLE;
   
 //  DC_DC_SW_ENABLE;
   
