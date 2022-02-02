@@ -12,7 +12,8 @@ volatile uint8_t digits[3] = {0,0,0};
 uint8_t *disp_w[10] = {&width_dig0, &width_dig1, &width_dig2, &width_dig3, &width_dig4, &width_dig5, &width_dig6, &width_dig7, &width_dig8, &width_dig9};
 uint8_t *disp_h[10] = {&height_dig0, &height_dig1, &height_dig2, &height_dig3, &height_dig4, &height_dig5, &height_dig6, &height_dig7, &height_dig8, &height_dig9};
 uint8_t *disp_p[10] = {(uint8_t *)dig0, (uint8_t *)dig1, (uint8_t *)dig2, (uint8_t *)dig3, (uint8_t *)dig4, (uint8_t *)dig5, (uint8_t *)dig6, (uint8_t *)dig7, (uint8_t *)dig8, (uint8_t *)dig9};
-volatile uint8_t DISPLAY_FLAG;
+volatile uint8_t Display_Status;
+volatile Display_StatusTypeDef Display_Status = CLEAR;
   
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
 void st7735_StartUp(void)//                                                  ┃
@@ -457,91 +458,124 @@ void Convert2Array(uint8_t num) //Конвертирует десятичное 
   }
 	return;
 };
-
-void DisplayOut(uint8_t bat, uint8_t spd, uint8_t wgt)
-{ if (GLOBAL_FLAG_RX & STOP_BUTTON_FLAG)
+/*----------------------------------------------------------------*/
+void DisplayOutMenu(uint8_t bat, uint8_t spd, uint8_t wgt) //Выводит меню
+/*----------------------------------------------------------------*/
+{
+  if ( Display_Status != MENU )
   {
-    if (!(DISPLAY_FLAG & DISPLAY_STOP))
-    {
-      lcd_st7735s_img8(0,0, width_stop_img, height_stop_img, stop_img);
-      DISPLAY_FLAG |= DISPLAY_STOP;
-      DISPLAY_FLAG &= ~DISPLAY_PREPERING;
-      DISPLAY_FLAG &= ~DISPLAY_MENU;
-    }
-    return;
-  }
-  else if (GLOBAL_FLAG_RX & INITIALIZATION_FLAG)
-  {
-    if (!(DISPLAY_FLAG & DISPLAY_PREPERING))
-    {
-      lcd_st7735s_img8(0,0, width_preparing_img, height_preparing_img, preparing_img);
-      DISPLAY_FLAG |= DISPLAY_PREPERING;
-      DISPLAY_FLAG &= ~DISPLAY_STOP;
-      DISPLAY_FLAG &= ~DISPLAY_MENU;
-    }
-    return;
+    lcd_st7735s_fillrect(0,0,127,159,rgb8_to_rgb16[0xFF]);
+    lcd_st7735s_img8(100,116, width_bat_img, height_bat_img, bat_img);
+    lcd_st7735s_img8(70,57, width_speed_img, height_speed_img, speed_img);
+    lcd_st7735s_img8(70,7, width_weight_img, height_weight_img, weight_img);
+    Display_Status = MENU;
   }
   else
   {
-    if (!(DISPLAY_FLAG & DISPLAY_MENU))
+    Convert2Array(bat);
+    lcd_st7735s_img8(12,117, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
+    if (bat > 9)
     {
-      lcd_st7735s_fillrect(0,0,127,159,0xFFFF);
-      lcd_st7735s_img8(100,116, width_bat_img, height_bat_img, bat_img);
-      lcd_st7735s_img8(70,57, width_speed_img, height_speed_img, speed_img);
-      lcd_st7735s_img8(70,7, width_weight_img, height_weight_img, weight_img);
-      DISPLAY_FLAG &= ~DISPLAY_STOP;
-      DISPLAY_FLAG &= ~DISPLAY_PREPERING;
-      DISPLAY_FLAG |= DISPLAY_MENU;
+      lcd_st7735s_img8(39,117, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
+      if (bat > 99)
+      {
+        lcd_st7735s_img8(66,117, *disp_w[digits[0]], *disp_h[digits[0]], disp_p[digits[0]]);
+      }
+      else
+      {
+        lcd_st7735s_fillrect(66,117,91,146,0xFFFF);
+      }
     }
     else
     {
-      Convert2Array(bat);
-      lcd_st7735s_img8(12,117, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
-      if (bat > 9)
+      lcd_st7735s_fillrect(39,117,91,176,0xFFFF);
+    }
+    Convert2Array(spd);
+    lcd_st7735s_img8(39,62, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
+    lcd_st7735s_img8(12,62, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
+    Convert2Array(wgt);
+    lcd_st7735s_img8(39,7, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
+    lcd_st7735s_img8(12,7, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
+    if (GLOBAL_CHARGE_FLAG & CHARGING_FLAG)
+    {
+      lcd_st7735s_img8(104,120, width_charge_img, height_charge_img, charge_img);
+    }
+    else
+    {
+      if (bat > 15) 
       {
-        lcd_st7735s_img8(39,117, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
-        if (bat > 99)
-        {
-          lcd_st7735s_img8(66,117, *disp_w[digits[0]], *disp_h[digits[0]], disp_p[digits[0]]);
-        }
-        else
-        {
-          lcd_st7735s_fillrect(66,117,91,146,0xFFFF);
-        }
+        lcd_st7735s_fillrect(104,(120 + bat*24/100 ),113,143,0xFFFF);
+        lcd_st7735s_fillrect(104,120,113,(119 + bat*24/100 ),0x65DC);
+      }
+      else if ((bat <= 15) && (bat >= 5))
+      {
+        lcd_st7735s_fillrect(104,(120 + bat*24/100 ),113,143,0xFFFF);
+        lcd_st7735s_fillrect(104,120,113,(119 + bat*24/100 ),0xF800);
       }
       else
       {
-        lcd_st7735s_fillrect(39,117,91,176,0xFFFF);
-      }
-      Convert2Array(spd);
-      lcd_st7735s_img8(39,62, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
-      lcd_st7735s_img8(12,62, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
-      Convert2Array(wgt);
-      lcd_st7735s_img8(39,7, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
-      lcd_st7735s_img8(12,7, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
-  
-      if (GLOBAL_CHARGE_FLAG & CHARGING_FLAG)
-      {
-        lcd_st7735s_img8(104,120, width_charge_img, height_charge_img, charge_img);
-      }
-      else
-      {
-        if (bat > 15) 
-        {
-          lcd_st7735s_fillrect(104,(120 + bat*24/100 ),113,143,0xFFFF);
-          lcd_st7735s_fillrect(104,120,113,(119 + bat*24/100 ),0x65DC);
-        }
-        else if ((bat <= 15) && (bat >= 5))
-        {
-          lcd_st7735s_fillrect(104,(120 + bat*24/100 ),113,143,0xFFFF);
-          lcd_st7735s_fillrect(104,120,113,(119 + bat*24/100 ),0xF800);
-        }
-        else
-        {
-          lcd_st7735s_fillrect(104,121,113,143,0xFFFF);
-          lcd_st7735s_fillrect(104,120,113,120,0xF800);
-        }
+        lcd_st7735s_fillrect(104,121,113,143,0xFFFF);
+        lcd_st7735s_fillrect(104,120,113,120,0xF800);
       }
     }
+  }
+}
+/*----------------------------------------------------------------*/
+void DisplayOutPrepering(void) //Выводит экран подготовки
+/*----------------------------------------------------------------*/
+{
+  lcd_st7735s_fillrect(0,0,127,159,rgb8_to_rgb16[0x0F]);
+  lcd_st7735s_img8(5,69, width_preparing_img, height_preparing_img, preparing_img);
+}
+/*----------------------------------------------------------------*/
+void DisplayOutStop(void) //Выводит Аварийный экран
+/*----------------------------------------------------------------*/
+{
+  lcd_st7735s_img8(0,0, width_stop_img, height_stop_img, stop_img);
+}
+/*----------------------------------------------------------------*/
+void DisplayOutLowBattery(void) //Выводит сообщение о низком заряде
+/*----------------------------------------------------------------*/
+{
+  lcd_st7735s_fillrect(0,0,127,159,rgb8_to_rgb16[0xFF]);
+  lcd_st7735s_img8(3,51, width_lowbattery_img, height_lowbattery_img, lowbattery_img);
+}
+/*----------------------------------------------------------------*/
+void DisplayOut(uint8_t bat, uint8_t spd, uint8_t wgt)
+/*----------------------------------------------------------------*/
+{
+  if ( GLOBAL_FLAG_RX & STOP_BUTTON_FLAG )
+  {
+    if ( Display_Status != STOP )
+    {
+      DisplayOutStop();
+      Display_Status = STOP;
+    }
+  }
+  else if ( GLOBAL_FLAG_RX & INITIALIZATION_FLAG )
+  {
+    if ( Display_Status != PREPERING )
+    {
+      DisplayOutPrepering();
+      Display_Status = PREPERING;
+    }
+  }
+  else if (( LL_TIM_GetCounter(TIM_Sleep) == 20 ) &&
+           ( bat <= 10 ))
+  {
+    if ( Display_Status != LOW_BAT )
+    {
+      DisplayOutLowBattery();
+      Display_Status = LOW_BAT;
+    }
+  }
+  else if ( Display_Status != LOW_BAT )
+  {
+    DisplayOutMenu(bat, spd, wgt);
+  }
+  else if (( NumFlagSleepDeny != 0 ) ||
+          (GLOBAL_CHARGE_FLAG & CHARGING_FLAG))
+  {
+    Display_Status = CLEAR;
   }
 }

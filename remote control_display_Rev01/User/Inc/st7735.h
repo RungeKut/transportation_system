@@ -61,13 +61,18 @@
 #define ST7735S_GMCTRP1		0xE0	//Gamma	‘+’polarity) Correction Characteristics Setting p.182
 #define ST7735S_GMCTRN1		0xE1	//Gamma ‘-’polarity Correction Characteristics Setting p.184
 #define ST7735S_GCV				0xFC	//Gate Pump Clock Frequency Variable p.186
-//-----------------------------------------------------------------------------/
-// Флаг работы с дисплеем
-//-----------------------------------------------------------------------------/
-#define DISPLAY_MENU       0x01  //На экране меню
-#define DISPLAY_PREPERING  0x02  //На экране подготовка
-#define DISPLAY_STOP       0x04  //На экране Авария
-extern volatile uint8_t DISPLAY_FLAG;
+
+/**********Begin**********Display_Status********************/
+typedef enum
+{
+  MENU         = 0x01, //На экране меню
+  PREPERING    = 0x03, //На экране подготовка
+  STOP         = 0x05, //На экране Авария
+  LOW_BAT      = 0x07, //На экране Низкий заряд сообщение
+  CLEAR        = 0xFF  //Дисплей должен быть перерисован
+} Display_StatusTypeDef;
+extern volatile Display_StatusTypeDef Display_Status;
+/**********End************Display_Status********************/
 
 //-----------------------------------------------------------------------------/
 // Дополнительные псевдонимы
@@ -157,6 +162,10 @@ void lcd_st7735s_img8(const uint16_t x, const uint16_t y, const uint16_t w, cons
 void Convert2Array(uint8_t);
 
 // Верстка дисплея из картинок
+void DisplayOutMenu(uint8_t, uint8_t, uint8_t);
+void DisplayOutPrepering(void);
+void DisplayOutStop(void);
+void DisplayOutLowBattery(void);
 void DisplayOut(uint8_t, uint8_t, uint8_t);
 
 #endif /* ST7735_H */

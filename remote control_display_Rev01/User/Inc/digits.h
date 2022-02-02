@@ -35,6 +35,8 @@ extern uint8_t width_stop_img;
 extern uint8_t height_stop_img;
 extern uint8_t width_preparing_img;
 extern uint8_t height_preparing_img;
+extern uint8_t width_lowbattery_img;
+extern uint8_t height_lowbattery_img;
 
 extern const uint8_t dig0[];
 extern const uint8_t dig1[];
@@ -52,5 +54,6 @@ extern const uint8_t weight_img[];
 extern const uint8_t charge_img[];
 extern const uint8_t stop_img[];
 extern const uint8_t preparing_img[];
+extern const uint8_t lowbattery_img[];
 
 #endif /* DIGITS_H */

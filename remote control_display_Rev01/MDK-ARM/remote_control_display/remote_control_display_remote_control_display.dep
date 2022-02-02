@@ -1,7 +1,7 @@
 Dependencies for Project 'remote_control_display', Target 'remote_control_display': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
 F (startup_stm32f334x8.s)(0x61F94B1F)(--cpu Cortex-M4.fp.sp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include--pd "__UVISION_VERSION SETA 533" --pd "_RTE_ SETA 1" --pd "STM32F334x8 SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f334x8.lst --xref -o remote_control_display\startup_stm32f334x8.o --depend remote_control_display\startup_stm32f334x8.d)
-F (../Core/Src/main.c)(0x61F9632F)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\main.o --omf_browse remote_control_display\main.crf --depend remote_control_display\main.d)
+F (../Core/Src/main.c)(0x61FA3631)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\main.o --omf_browse remote_control_display\main.crf --depend remote_control_display\main.d)
 I (../Core/Inc/main.h)(0x61F94B1D)
 I (../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_crc.h)(0x6155565F)
 I (../Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f3xx.h)(0x6155565F)
@@ -29,8 +29,8 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
@@ -67,8 +67,8 @@ I (../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_gpio.h)(0x6155565F)
 I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
@@ -103,8 +103,8 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
@@ -139,8 +139,8 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
@@ -174,8 +174,8 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
@@ -209,8 +209,8 @@ I (../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_gpio.h)(0x6155565F)
 I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
@@ -245,8 +245,8 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
@@ -280,8 +280,8 @@ I (../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_gpio.h)(0x6155565F)
 I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
@@ -315,16 +315,16 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
 I (../Core/Inc/dma.h)(0x61F94B1C)
 I (..\User\Inc\crc_work.h)(0x61E7C583)
 I (../Core/Inc/stm32f3xx_it.h)(0x61F94B1D)
-F (..\User\Src\digits.c)(0x61E9432F)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\digits.o --omf_browse remote_control_display\digits.crf --depend remote_control_display\digits.d)
-I (..\User\Inc\digits.h)(0x61E9432F)
+F (..\User\Src\digits.c)(0x61FA35A8)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\digits.o --omf_browse remote_control_display\digits.crf --depend remote_control_display\digits.d)
+I (..\User\Inc\digits.h)(0x61FA2F70)
 I (../Core/Inc/main.h)(0x61F94B1D)
 I (../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_crc.h)(0x6155565F)
 I (../Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f3xx.h)(0x6155565F)
@@ -352,13 +352,13 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
 I (../Core/Inc/dma.h)(0x61F94B1C)
 I (..\User\Inc\crc_work.h)(0x61E7C583)
-F (..\User\Src\periphery.c)(0x61F934A6)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\periphery.o --omf_browse remote_control_display\periphery.crf --depend remote_control_display\periphery.d)
+F (..\User\Src\periphery.c)(0x61FA1C7E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\periphery.o --omf_browse remote_control_display\periphery.crf --depend remote_control_display\periphery.d)
 I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/main.h)(0x61F94B1D)
 I (../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_crc.h)(0x6155565F)
@@ -386,14 +386,14 @@ I (../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_gpio.h)(0x6155565F)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
 I (../Core/Inc/dma.h)(0x61F94B1C)
 I (..\User\Inc\crc_work.h)(0x61E7C583)
-F (..\User\Src\power.c)(0x61F965D7)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\power.o --omf_browse remote_control_display\power.crf --depend remote_control_display\power.d)
+F (..\User\Src\power.c)(0x61FA4784)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\power.o --omf_browse remote_control_display\power.crf --depend remote_control_display\power.d)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (../Core/Inc/main.h)(0x61F94B1D)
 I (../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_crc.h)(0x6155565F)
@@ -422,14 +422,14 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
 I (../Core/Inc/dma.h)(0x61F94B1C)
 I (..\User\Inc\crc_work.h)(0x61E7C583)
-F (..\User\Src\st7735.c)(0x61EA57B1)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\st7735.o --omf_browse remote_control_display\st7735.crf --depend remote_control_display\st7735.d)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+F (..\User\Src\st7735.c)(0x61FA5AD1)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I ../Drivers/CMSIS/Include -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy-I.\RTE\_remote_control_display-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32F3xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F334x8 -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32F334x8 -DHSE_VALUE="8000000" -DHSE_STARTUP_TIMEOUT="100" -DLSE_STARTUP_TIMEOUT="5000" -DLSE_VALUE="32768" -DEXTERNAL_CLOCK_VALUE="8000000" -DHSI_VALUE="8000000" -DLSI_VALUE="40000" -DVDD_VALUE="3300" -DPREFETCH_ENABLE="1"-o remote_control_display\st7735.o --omf_browse remote_control_display\st7735.crf --depend remote_control_display\st7735.d)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (../Core/Inc/main.h)(0x61F94B1D)
 I (../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_crc.h)(0x6155565F)
 I (../Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f3xx.h)(0x6155565F)
@@ -457,7 +457,7 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
+I (..\User\Inc\digits.h)(0x61FA2F70)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)
@@ -492,8 +492,8 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\config.h)(0x61F92CE9)
 I (../Core/Inc/dma.h)(0x61F94B1C)
@@ -527,8 +527,8 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (../Core/Inc/dma.h)(0x61F94B1C)
@@ -562,8 +562,8 @@ I (..\User\Inc\periphery.h)(0x61F10F02)
 I (../Core/Inc/usart.h)(0x61F94B1C)
 I (../Core/Inc/spi.h)(0x61F94B1C)
 I (../Core/Inc/gpio.h)(0x61F94B19)
-I (..\User\Inc\digits.h)(0x61E9432F)
-I (..\User\Inc\st7735.h)(0x61E94B2C)
+I (..\User\Inc\digits.h)(0x61FA2F70)
+I (..\User\Inc\st7735.h)(0x61FA5884)
 I (..\User\Inc\power.h)(0x61F960AC)
 I (..\User\Inc\rs485.h)(0x61E6D42C)
 I (..\User\Inc\config.h)(0x61F92CE9)

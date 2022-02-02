@@ -315,7 +315,7 @@ void StepGenerate_IRQHandler_Callback(TIM_TypeDef *TIMS)//                   ┃
         }
         return;
       }
-      else
+      else if (!(GLOBAL_FLAG_TX & STOP_BUTTON_FLAG))
       {
         step = 0; //Дополнительная инициализация во время работы при наезде на концевик
         keystrokeCounter = 0;
@@ -333,7 +333,7 @@ void StepGenerate_IRQHandler_Callback(TIM_TypeDef *TIMS)//                   ┃
         }
         return;
       }
-      else
+      else if (!(GLOBAL_FLAG_TX & STOP_BUTTON_FLAG))
       {
         step = MAX_STEP; //Дополнительная инициализация во время работы при наезде на концевик
         keystrokeCounter = 0;

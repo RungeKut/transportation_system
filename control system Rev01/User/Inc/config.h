@@ -119,6 +119,7 @@ extern volatile BDC_PWM_FreqencyTypeDef BDC_PWM_Freqency;
 #define ENCODER_DIAM    12     //диаметр колеса в зацеплении с рельсой, см
 #define BATTERY_MAX_V   252    //напряжение полностью заряженного аккумулятора
 #define BATTERY_MIN_V   175    //напряжение полностью разряженного аккумулятора
+#define BATTERY_LIMIT   5      //% заряда, ниже которого ограничивается подъем и регулировка рвзгрузки
 #define CRC_SIZE        4      //Сколько байт занимает CRC в пакете 4*8=32bit
 #define PACK_SIZE       28     //Размер посылки, байт
 #define BDCMaxDutyCicle 1000   //Максимальная скважность ШИМ мотора карретки, %*10

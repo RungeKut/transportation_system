@@ -139,7 +139,8 @@ void ButtonFlagControl(void)//                                               ┃
   }
   
          if (( Button_Status == BUT_UP ) && //Кнопка подъемник вверх
-             ( Battery_Status != CHARGING ))
+             ( Battery_Status != CHARGING ) &&
+             ( battery > BATTERY_LIMIT ))
     {
       GLOBAL_FLAG_TX |= BUT_UP_FLAG;
       LL_GPIO_SetOutputPin(PP_UP_GPIO_Port,PP_UP_Pin);
@@ -190,7 +191,8 @@ void ButtonFlagControl(void)//                                               ┃
     }
     else if ((!( GLOBAL_FLAG_TX & LIMIT_SWITCH_UP_FLAG )) && //Кнопка разгрузка увеличить вес
                ( Button_Status == BUT_STRONG            ) &&
-               ( Battery_Status != CHARGING ))
+               ( Battery_Status != CHARGING             ) &&
+               ( battery > BATTERY_LIMIT ))
     {
       GLOBAL_FLAG_TX |= BUT_STRONG_FLAG;
       if (!(GLOBAL_FLAG_TX & DIRECTION_FLAG))
@@ -198,8 +200,9 @@ void ButtonFlagControl(void)//                                               ┃
       MOTOR_START_DOWN(AC_TIM, ST_TIM);
     }
     else if ((!( GLOBAL_FLAG_TX & LIMIT_SWITCH_DOWN_FLAG)) && //Кнопка разгрузка уменьшить вес
-               ( Button_Status == BUT_WEAK          ) &&
-               ( Battery_Status != CHARGING ))
+               ( Button_Status == BUT_WEAK               ) &&
+               ( Battery_Status != CHARGING              ) &&
+               ( battery > BATTERY_LIMIT ))
     {
       GLOBAL_FLAG_TX |= BUT_WEAK_FLAG;
       if (GLOBAL_FLAG_TX & DIRECTION_FLAG)

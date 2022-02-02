@@ -46,7 +46,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -107,7 +107,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -163,7 +163,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -220,7 +220,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -277,7 +277,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -333,7 +333,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -390,7 +390,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -446,7 +446,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -503,7 +503,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -1320,7 +1320,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x6136153A)
 F (..\User\Src\config.c)(0x61F9164A)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\User -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy-I.\RTE\_Project_Dynamic_razgruz_L072SU-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32L0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32L072xx -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32L072xx -DUSE_HAL_DRIVER-o .\project_dynamic_razgruz_l072su\config.o --omf_browse .\project_dynamic_razgruz_l072su\config.crf --depend .\project_dynamic_razgruz_l072su\config.d)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (../Core/Inc/main.h)(0x61F7D906)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x6136153A)
 I (../Core/Inc/stm32l0xx_hal_conf.h)(0x61F7D906)
@@ -1375,7 +1375,7 @@ I (..\User\Inc\CurrentBDC.h)(0x61C47A9E)
 I (..\User\Inc\ina239_power.h)(0x61E6BB09)
 I (../Core/Inc/spi.h)(0x61F7D905)
 I (..\User\Inc\flash_work.h)(0x61E14CBC)
-F (..\User\Src\periphery.c)(0x61F92368)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\User -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy-I.\RTE\_Project_Dynamic_razgruz_L072SU-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32L0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32L072xx -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32L072xx -DUSE_HAL_DRIVER-o .\project_dynamic_razgruz_l072su\periphery.o --omf_browse .\project_dynamic_razgruz_l072su\periphery.crf --depend .\project_dynamic_razgruz_l072su\periphery.d)
+F (..\User\Src\periphery.c)(0x61FA6268)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\User -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy-I.\RTE\_Project_Dynamic_razgruz_L072SU-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32L0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32L072xx -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32L072xx -DUSE_HAL_DRIVER-o .\project_dynamic_razgruz_l072su\periphery.o --omf_browse .\project_dynamic_razgruz_l072su\periphery.crf --depend .\project_dynamic_razgruz_l072su\periphery.d)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (../Core/Inc/main.h)(0x61F7D906)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x6136153A)
@@ -1421,7 +1421,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
 I (..\User\Inc\step_motor.h)(0x61EFD871)
@@ -1477,7 +1477,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
 I (..\User\Inc\step_motor.h)(0x61EFD871)
@@ -1533,7 +1533,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\step_motor.h)(0x61EFD871)
@@ -1543,7 +1543,7 @@ I (..\User\Inc\CurrentBDC.h)(0x61C47A9E)
 I (..\User\Inc\ina239_power.h)(0x61E6BB09)
 I (../Core/Inc/spi.h)(0x61F7D905)
 I (..\User\Inc\flash_work.h)(0x61E14CBC)
-F (..\User\Src\step_motor.c)(0x61F92487)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\User -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy-I.\RTE\_Project_Dynamic_razgruz_L072SU-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32L0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32L072xx -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32L072xx -DUSE_HAL_DRIVER-o .\project_dynamic_razgruz_l072su\step_motor.o --omf_browse .\project_dynamic_razgruz_l072su\step_motor.crf --depend .\project_dynamic_razgruz_l072su\step_motor.d)
+F (..\User\Src\step_motor.c)(0x61FA6059)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\User -I ..\User\Src -I ..\User\Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy-I.\RTE\_Project_Dynamic_razgruz_L072SU-IC:\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Arm\Packs\Keil\STM32L0xx_DFP\2.1.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32L072xx -D_RTE_ -DUSE_FULL_LL_DRIVER -DSTM32L072xx -DUSE_HAL_DRIVER-o .\project_dynamic_razgruz_l072su\step_motor.o --omf_browse .\project_dynamic_razgruz_l072su\step_motor.crf --depend .\project_dynamic_razgruz_l072su\step_motor.d)
 I (..\User\Inc\step_motor.h)(0x61EFD871)
 I (../Core/Inc/main.h)(0x61F7D906)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x6136153A)
@@ -1589,7 +1589,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -1645,7 +1645,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -1701,7 +1701,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -1757,7 +1757,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)
@@ -1813,7 +1813,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_dma.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_tim.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usart.h)(0x6136153A)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_gpio.h)(0x6136153A)
-I (..\User\Inc\config.h)(0x61F91F63)
+I (..\User\Inc\config.h)(0x61FA6268)
 I (..\User\Inc\periphery.h)(0x61F8EE11)
 I (..\User\Inc\bdc_motor.h)(0x61F7F2A9)
 I (..\User\Inc\rs485.h)(0x61EFA22B)

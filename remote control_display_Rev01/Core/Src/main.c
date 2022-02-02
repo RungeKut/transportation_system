@@ -123,10 +123,10 @@ int main(void)
   MX_USART1_UART_Init();
   MX_SPI1_Init();
   MX_CRC_Init();
-  MX_IWDG_Init();
+//  MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
 
-  SleepAfterWatchDog();
+//  SleepAfterWatchDog();
 	StartUpConfig();
 			
   /* USER CODE END 2 */

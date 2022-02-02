@@ -40,28 +40,28 @@ void ScanButton(void) {
   {
     GLOBAL_FLAG_TX &= ~BUT_FORWARD_FLAG;
 	}
-  if	(LL_GPIO_IsInputPinSet(SA5_GPIO_Port, SA5_Pin) == 1) {
+  if	(LL_GPIO_IsInputPinSet(SA7_GPIO_Port, SA7_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_WEAK_FLAG;
 	}
   else
   {
     GLOBAL_FLAG_TX &= ~BUT_WEAK_FLAG;
 	}
-  if	(LL_GPIO_IsInputPinSet(SA6_GPIO_Port, SA6_Pin) == 1) {
+  if	(LL_GPIO_IsInputPinSet(SA8_GPIO_Port, SA8_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_STRONG_FLAG;
 	}
   else
   {
     GLOBAL_FLAG_TX &= ~BUT_STRONG_FLAG;
 	}
-  if	(LL_GPIO_IsInputPinSet(SA7_GPIO_Port, SA7_Pin) == 1) {
+  if	(LL_GPIO_IsInputPinSet(SA5_GPIO_Port, SA5_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_SPEED_DOWN_FLAG;
 	}
   else
   {
     GLOBAL_FLAG_TX &= ~BUT_SPEED_DOWN_FLAG;
 	}
-  if	(LL_GPIO_IsInputPinSet(SA8_GPIO_Port, SA8_Pin) == 1) {
+  if	(LL_GPIO_IsInputPinSet(SA6_GPIO_Port, SA6_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_SPEED_UP_FLAG;
 	}
   else
