@@ -1,0 +1,11 @@
+/Drivers/CMSIS/*.txt
+/Drivers/CMSIS/Device/ST/STM32F1xx/*.md
+/Drivers/STM32F1xx_HAL_Driver/*.md
+/MDK-ARM/DebugConfig
+/MDK-ARM/RTE
+/MDK-ARM/remote_control_display
+/MDK-ARM/*.scvd
+/MDK-ARM/*.lst
+/MDK-ARM/*.bspch
+/MDK-ARM/*.Roman
+/MDK-ARM/*.bolshakov.s
