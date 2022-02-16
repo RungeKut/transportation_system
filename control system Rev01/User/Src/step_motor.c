@@ -2,7 +2,7 @@
 #include "main.h"
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
-//Стат																																			 ┃
+//Старт	(начальная инициализация мотора)  																	 ┃
 void step_StartUp(void)//																										 ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
@@ -197,7 +197,7 @@ void Motor_Initialization (TIM_TypeDef *TIMA, TIM_TypeDef *TIMS, TIM_TypeDef *TI
         {
           OFF_STEP_TIMER(TIMA, TIMS);
           GLOBAL_FLAG_TX &= ~INITIALIZATION_FLAG;
-          GLOBAL_FLAG_TX &= ~ STOPING_FLAG;
+          GLOBAL_FLAG_TX &= ~STOPING_FLAG;
           step = MAX_STEP;
           Freq_step = MIN_FREQ;
           keystrokeCounter = 0;
@@ -210,7 +210,7 @@ void Motor_Initialization (TIM_TypeDef *TIMA, TIM_TypeDef *TIMS, TIM_TypeDef *TI
         {
           OFF_STEP_TIMER(TIMA, TIMS);
           GLOBAL_FLAG_TX &= ~INITIALIZATION_FLAG;
-          GLOBAL_FLAG_TX &= ~ STOPING_FLAG;
+          GLOBAL_FLAG_TX &= ~STOPING_FLAG;
           step = 0;
           Freq_step = MIN_FREQ;
           keystrokeCounter = 0;
@@ -223,14 +223,14 @@ void Motor_Initialization (TIM_TypeDef *TIMA, TIM_TypeDef *TIMS, TIM_TypeDef *TI
       LL_TIM_DisableCounter(TIMsleep);
       MOTOR_START_DOWN(TIMA, TIMS);
       GLOBAL_FLAG_TX |= START_DOWN_FLAG;
-      GLOBAL_FLAG_TX &= ~ STOPING_FLAG;
+      GLOBAL_FLAG_TX &= ~STOPING_FLAG;
     }
     else
     {
       LL_TIM_DisableCounter(TIMsleep);
       MOTOR_START_UP(TIMA, TIMS);
       GLOBAL_FLAG_TX |= START_UP_FLAG;
-      GLOBAL_FLAG_TX &= ~ STOPING_FLAG;
+      GLOBAL_FLAG_TX &= ~STOPING_FLAG;
     }
   }
   

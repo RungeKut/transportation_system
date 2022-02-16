@@ -2,10 +2,12 @@
 #include "main.h"
 
 volatile Sound_StatusTypeDef Sound_Status = Sound_OK;
+
 uint8_t track_up[6] = {5, 0x09, 0x01, 0x19, 0x01, 0x29};
 uint8_t track_down[6] = {5, 0x29, 0x01, 0x19, 0x01, 0x09};
 uint8_t track_charging[4] = {3, 0x0F, 0x07, 0x0F};
 uint8_t track_charge[4] = {3, 0x0E, 0x06, 0x0E};
+uint8_t track_limit[6] = {5, 0x0E, 0x06, 0x0E, 0x06, 0x0E};
 
 uint16_t MidiNum_to_freq[31] = {1760,1864,1975,2093,2217,2349,2489,2637,2793,2959,3135,3322,3520,3729,3951,4186,4434,4698,4978,5274,5587,5919,6271,6644,7040,7458,7902,8372,8869,9397,9956};
 uint32_t Sound_tick = 0;

@@ -23,6 +23,7 @@ extern uint8_t track_up[6];
 extern uint8_t track_down[6];
 extern uint8_t track_charge[4];
 extern uint8_t track_charging[4];
+extern uint8_t track_limit[6];
 
 //uint32_t MidiNum_to_freq(uint8_t);
 void Sound_PWM(uint16_t, uint16_t);
