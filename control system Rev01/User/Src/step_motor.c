@@ -203,13 +203,37 @@ void Motor_Initialization (TIM_TypeDef *TIMA, TIM_TypeDef *TIMS, TIM_TypeDef *TI
           keystrokeCounter = 0;
         }
   }
+  else if (GLOBAL_FLAG_TX & LIMIT_SWITCH_DOWN_FLAG)
+  {
+    MOTOR_STOP(TIMA, TIMS, TIMsleep);
+        if (GLOBAL_FLAG_TX & INITIALIZATION_FLAG)
+        {
+          OFF_STEP_TIMER(TIMA, TIMS);
+          GLOBAL_FLAG_TX &= ~INITIALIZATION_FLAG;
+          GLOBAL_FLAG_TX &= ~ STOPING_FLAG;
+          step = 0;
+          Freq_step = MIN_FREQ;
+          keystrokeCounter = 0;
+        }
+  }
   else if (LL_TIM_IsEnabledCounter(TIMS) == 0) 
   {
-    LL_TIM_DisableCounter(TIMsleep);
-    MOTOR_START_DOWN(TIMA, TIMS);
-    GLOBAL_FLAG_TX |= START_DOWN_FLAG;
-    GLOBAL_FLAG_TX &= ~ STOPING_FLAG;
+    if (step > (MAX_STEP / 2))
+    {
+      LL_TIM_DisableCounter(TIMsleep);
+      MOTOR_START_DOWN(TIMA, TIMS);
+      GLOBAL_FLAG_TX |= START_DOWN_FLAG;
+      GLOBAL_FLAG_TX &= ~ STOPING_FLAG;
+    }
+    else
+    {
+      LL_TIM_DisableCounter(TIMsleep);
+      MOTOR_START_UP(TIMA, TIMS);
+      GLOBAL_FLAG_TX |= START_UP_FLAG;
+      GLOBAL_FLAG_TX &= ~ STOPING_FLAG;
+    }
   }
+  
   return;
 }
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/

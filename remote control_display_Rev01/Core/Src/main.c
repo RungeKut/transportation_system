@@ -137,7 +137,7 @@ int main(void)
   {
     ScanButton();
     DisplayOut(battery, speed, weight);
-//    ResetTIM_Sleep();
+    ResetTIM_Sleep();
     Sound_Player((uint8_t *)Sound_track);
     /* USER CODE END WHILE */
 
