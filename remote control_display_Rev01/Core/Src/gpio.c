@@ -54,13 +54,12 @@ void MX_GPIO_Init(void)
   LL_GPIO_ResetOutputPin(Seg_d_GPIO_Port, Seg_d_Pin);
 
   /**/
-  LL_GPIO_ResetOutputPin(GPIOA, Seg_dp_Pin|Seg_g_Pin|PIEZO_Pin/*|Led1_Pin*/
-                          |Seg_1_Disp_reset_Pin);
+  LL_GPIO_ResetOutputPin(GPIOA, Seg_dp_Pin|Seg_g_Pin|Led1_Pin|Seg_1_Disp_reset_Pin);
 
   /**/
   LL_GPIO_ResetOutputPin(GPIOB, VIBRO_Pin|Seg_a_Disp_DC_Pin|Seg_e_Pin|Seg_f_Pin
-                          /*|Led2_Pin*/|Seg_c_Disp_BackLight_Pin|Seg_b_Pin|Seg_2_Disp_CS_Pin
-                          |Seg_3_Disp_IMO_Pin/*|Led3_Pin*/);
+                          |Led2_Pin|Seg_c_Disp_BackLight_Pin|Seg_b_Pin|Seg_2_Disp_CS_Pin
+                          |Seg_3_Disp_IMO_Pin|Led3_Pin);
 
   /**/
   GPIO_InitStruct.Pin = Seg_d_Pin;
@@ -78,7 +77,7 @@ void MX_GPIO_Init(void)
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /**/
-  GPIO_InitStruct.Pin = Seg_dp_Pin|Seg_g_Pin|PIEZO_Pin|Seg_1_Disp_reset_Pin;
+  GPIO_InitStruct.Pin = Seg_dp_Pin|Seg_g_Pin|Seg_1_Disp_reset_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;

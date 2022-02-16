@@ -119,16 +119,16 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_TIM2_Init();
-//  MX_TIM3_Init();
+  MX_TIM3_Init();
   MX_USART1_UART_Init();
   MX_SPI1_Init();
   MX_CRC_Init();
-//  MX_IWDG_Init();
+  MX_IWDG_Init();
+  MX_TIM15_Init();
   /* USER CODE BEGIN 2 */
 
-//  SleepAfterWatchDog();
+  SleepAfterWatchDog();
 	StartUpConfig();
-			
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -137,8 +137,8 @@ int main(void)
   {
     ScanButton();
     DisplayOut(battery, speed, weight);
-    ResetTIM_Sleep();
-    
+//    ResetTIM_Sleep();
+    Sound_Player((uint8_t *)Sound_track);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

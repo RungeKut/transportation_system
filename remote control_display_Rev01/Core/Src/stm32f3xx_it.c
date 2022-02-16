@@ -24,8 +24,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-volatile uint8_t TIM3_FLAG = 0;
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -268,6 +266,20 @@ void DMA1_Channel5_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles TIM1 break and TIM15 interrupts.
+  */
+void TIM1_BRK_TIM15_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM1_BRK_TIM15_IRQn 0 */
+  StandbyMode_IRQHandler();
+  /* USER CODE END TIM1_BRK_TIM15_IRQn 0 */
+
+  /* USER CODE BEGIN TIM1_BRK_TIM15_IRQn 1 */
+
+  /* USER CODE END TIM1_BRK_TIM15_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM2 global interrupt.
   */
 void TIM2_IRQHandler(void)
@@ -291,20 +303,7 @@ void TIM2_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
-  if (LL_TIM_IsActiveFlag_UPDATE(TIM3))
-	{
-		LL_TIM_ClearFlag_UPDATE(TIM3);
-		if (TIM3_FLAG == 0)
-		{
-			TIM3_FLAG = 1;
-			return;
-		}
-		TIM3_FLAG = 0;
-
-		LL_mDelay(10);
-		GoToStandbyMode();
-		LL_TIM_SetCounter(TIM3,10);
-	}
+  Sound_IRQHandler();
   /* USER CODE END TIM3_IRQn 0 */
   /* USER CODE BEGIN TIM3_IRQn 1 */
 

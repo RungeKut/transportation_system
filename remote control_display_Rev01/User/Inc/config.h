@@ -76,12 +76,17 @@
 
 /* Port BEGIN */
 #define Type_of_timer      TIM_TypeDef        //Имя типа таймера стандартной библиотеки
-#define TIM_Sleep          TIM3                //Таймер, используемый для задержки засыпания мк
+#define TIM_Sleep          TIM15              //Таймер, используемый для задержки засыпания мк
 #define Type_of_DMA        DMA_TypeDef        //Имя типа DMA стандартной библиотеки
 #define N_DMA              DMA1               //Имя DMA стандартной библиотеки
 #define CRC_SIZE           4                  //Сколько байт занимает CRC в пакете 4*8=32bit
 #define PACK_SIZE          28                 //Размер посылки, байт
 #define bufferSize         PACK_SIZE + CRC_SIZE
+#define TIM_Sound          TIM3               //Таймер для генерации PWM звука
+#define TIM_Sound_CH       LL_TIM_CHANNEL_CH1
+#define TIM_Sound_PSC      359
+#define TIM_Sound_ARR      2
+#define Sound_bpm          10
 /* Port END */
 
 extern volatile char tx_str[bufferSize];

@@ -14,6 +14,8 @@ uint8_t *disp_h[10] = {&height_dig0, &height_dig1, &height_dig2, &height_dig3, &
 uint8_t *disp_p[10] = {(uint8_t *)dig0, (uint8_t *)dig1, (uint8_t *)dig2, (uint8_t *)dig3, (uint8_t *)dig4, (uint8_t *)dig5, (uint8_t *)dig6, (uint8_t *)dig7, (uint8_t *)dig8, (uint8_t *)dig9};
 volatile uint8_t Display_Status;
 volatile Display_StatusTypeDef Display_Status = CLEAR;
+volatile uint8_t Charger_Status = 0;
+volatile uint8_t DisplayOutLowBattery_Status = 0;
   
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
 void st7735_StartUp(void)//                                                  ┃
@@ -469,6 +471,7 @@ void DisplayOutMenu(uint8_t bat, uint8_t spd, uint8_t wgt) //Выводит ме
     lcd_st7735s_img8(70,57, width_speed_img, height_speed_img, speed_img);
     lcd_st7735s_img8(70,7, width_weight_img, height_weight_img, weight_img);
     Display_Status = MENU;
+    DisplayOutLowBattery_Status = 0;
   }
   else
   {
@@ -496,12 +499,19 @@ void DisplayOutMenu(uint8_t bat, uint8_t spd, uint8_t wgt) //Выводит ме
     Convert2Array(wgt);
     lcd_st7735s_img8(39,7, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
     lcd_st7735s_img8(12,7, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
+    
     if (GLOBAL_CHARGE_FLAG & CHARGING_FLAG)
     {
-      lcd_st7735s_img8(104,120, width_charge_img, height_charge_img, charge_img);
+      if (Charger_Status == 0)
+      {
+        Charger_Status = 1;
+        lcd_st7735s_img8(104,120, width_charge_img, height_charge_img, charge_img);
+        Sound_Play(track_charging);
+      }
     }
     else
     {
+      Charger_Status = 0;
       if (bat > 15) 
       {
         lcd_st7735s_fillrect(104,(120 + bat*24/100 ),113,143,0xFFFF);
@@ -539,6 +549,11 @@ void DisplayOutLowBattery(void) //Выводит сообщение о низк�
 {
   lcd_st7735s_fillrect(0,0,127,159,rgb8_to_rgb16[0xFF]);
   lcd_st7735s_img8(3,51, width_lowbattery_img, height_lowbattery_img, lowbattery_img);
+  if (DisplayOutLowBattery_Status == 0)
+  {
+    DisplayOutLowBattery_Status = 1;
+    Sound_Play(track_charge);
+  }
 }
 /*----------------------------------------------------------------*/
 void DisplayOut(uint8_t bat, uint8_t spd, uint8_t wgt)

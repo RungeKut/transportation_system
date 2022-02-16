@@ -64,6 +64,7 @@ void StartUpConfig(void)//                                                   ┃
 //  LL_TIM_SetPrescaler(TIM_Sleep, 1092 * SleepTime_sec);
 //  LL_TIM_SetAutoReload(TIM_Sleep, 0xFFFF);
 //  LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
+  
 	LL_TIM_EnableIT_UPDATE(TIM_Sleep);
 	LL_TIM_EnableCounter(TIM_Sleep); //Таймер сна
   

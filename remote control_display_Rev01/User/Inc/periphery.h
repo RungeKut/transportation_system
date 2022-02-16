@@ -1,6 +1,8 @@
 #ifndef PERIPHERY_H
 #define PERIPHERY_H
 
+#include "main.h"
+
 /**********Begin**********Button_Status********************/
 typedef enum
 {
@@ -19,6 +21,5 @@ extern volatile Button_StatusTypeDef Button_Status;
 
 void Vibro_touch(void);
 void ScanButton(void);
-void ButtonControlWithRule(void);
 
 #endif /* PERIPHERY_H */

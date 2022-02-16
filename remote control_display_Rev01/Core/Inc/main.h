@@ -63,6 +63,7 @@ extern "C" {
 #include "config.h"
 #include "dma.h"
 #include "crc_work.h"
+#include "sound.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -101,8 +102,6 @@ void Convert2Array(uint8_t num);
 #define SA4_GPIO_Port GPIOA
 #define SA6_Pin LL_GPIO_PIN_4
 #define SA6_GPIO_Port GPIOA
-#define PIEZO_Pin LL_GPIO_PIN_6
-#define PIEZO_GPIO_Port GPIOA
 #define VIBRO_Pin LL_GPIO_PIN_0
 #define VIBRO_GPIO_Port GPIOB
 #define Seg_a_Disp_DC_Pin LL_GPIO_PIN_1

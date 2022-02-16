@@ -3,28 +3,52 @@
 
 volatile Button_StatusTypeDef Button_Status = BUT_OK;
 
+/*----------------------------------------------------------------*/
 void Vibro_touch(void) 
+/*----------------------------------------------------------------*/
 {
 	LL_GPIO_TogglePin(VIBRO_GPIO_Port, VIBRO_Pin);
 	return;
 }
 
+/*----------------------------------------------------------------*/
 //Сканирование кнопок пульта и установка флагов в регистре приема
-void ScanButton(void) {
+void ScanButton(void)
+/*----------------------------------------------------------------*/
+{
   if (LL_GPIO_IsInputPinSet(SA1_GPIO_Port, SA1_Pin) == 1)
   {
-    GLOBAL_FLAG_TX |= BUT_DOWN_FLAG;
+    if (Button_Status == BUT_OK)
+    {
+      GLOBAL_FLAG_TX |= BUT_DOWN_FLAG;
+      Button_Status = BUT_DOWN;
+      Sound_Play(track_down);
+    }
 	}
   else
   {
-    GLOBAL_FLAG_TX &= ~BUT_DOWN_FLAG;
+    if (Button_Status == BUT_DOWN)
+    {
+      GLOBAL_FLAG_TX &= ~BUT_DOWN_FLAG;
+      Button_Status = BUT_OK;
+    }
 	}
-  if	(LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1) {
-    GLOBAL_FLAG_TX |= BUT_UP_FLAG;
+  if	(LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1)
+  {
+    if (Button_Status == BUT_OK)
+    {
+      GLOBAL_FLAG_TX |= BUT_UP_FLAG;
+      Button_Status = BUT_UP;
+      Sound_Play(track_up);
+    }
 	}
   else
   {
-    GLOBAL_FLAG_TX &= ~BUT_UP_FLAG;
+    if (Button_Status == BUT_UP)
+    {
+      GLOBAL_FLAG_TX &= ~BUT_UP_FLAG;
+      Button_Status = BUT_OK;
+    }
 	}
   if	(LL_GPIO_IsInputPinSet(SA3_GPIO_Port, SA3_Pin) == 1) {
     GLOBAL_FLAG_TX |= BUT_BACKWARD_FLAG;

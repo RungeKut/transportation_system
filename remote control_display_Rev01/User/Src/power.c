@@ -94,6 +94,28 @@ void GoToStandbyMode(void)
 //irq_restore(state);
 //	irq_enable();
 }
+
+volatile uint8_t Sleep_FLAG = 0;
+
+/*----------------------------------------------------------------*/
+void StandbyMode_IRQHandler(void)
+/*----------------------------------------------------------------*/
+{
+  if (LL_TIM_IsActiveFlag_UPDATE(TIM_Sleep))
+	{
+		LL_TIM_ClearFlag_UPDATE(TIM_Sleep);
+		if (Sleep_FLAG == 0)
+		{
+			Sleep_FLAG = 1;
+			return;
+		}
+		Sleep_FLAG = 0;
+
+		LL_mDelay(10);
+		GoToStandbyMode();
+		LL_TIM_SetCounter(TIM_Sleep,10);
+	}
+}
 /*----------------------------------------------------------------*/
 void ResetTIM_Sleep(void)
 /*----------------------------------------------------------------*/
@@ -113,7 +135,7 @@ void ResetTIM_Sleep(void)
                                                 STOP_BUTTON_FLAG          ));
   if ( NumFlagSleepDeny != 0 )
   {
-    LL_TIM_SetCounter(TIM_Sleep, 0x1E);
+    LL_TIM_SetCounter(TIM_Sleep, 0x0);
   }
 }
 /*----------------------------------------------------------------*/
