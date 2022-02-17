@@ -129,6 +129,7 @@ int main(void)
 
   SleepAfterWatchDog();
 	StartUpConfig();
+ // Sound_Play(track_sw);
   /* USER CODE END 2 */
 
   /* Infinite loop */
