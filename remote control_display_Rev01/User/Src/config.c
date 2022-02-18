@@ -65,8 +65,10 @@ void StartUpConfig(void)//                                                   ┃
 //  LL_TIM_SetAutoReload(TIM_Sleep, 0xFFFF);
 //  LL_TIM_SetCounter(TIM_Sleep, 0xFFFF);
   
-	LL_TIM_EnableIT_UPDATE(TIM_Sleep);
+	LL_TIM_EnableIT_UPDATE(TIM_Sleep); //Таймер сна
 	LL_TIM_EnableCounter(TIM_Sleep); //Таймер сна
+//  LL_TIM_CC_EnableChannel(TIM_Sleep, LL_TIM_CHANNEL_CH1);
+//  LL_TIM_OC_SetCompareCH1(TIM_Sleep, 1);
   
 //	LL_TIM_EnableIT_UPDATE(TIM6);
 //	LL_TIM_EnableCounter(TIM6);

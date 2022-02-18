@@ -94,10 +94,6 @@ void Convert2Array(uint8_t num);
 #define Seg_d_GPIO_Port GPIOC
 #define SA2_Pin LL_GPIO_PIN_0
 #define SA2_GPIO_Port GPIOA
-#define Seg_dp_Pin LL_GPIO_PIN_1
-#define Seg_dp_GPIO_Port GPIOA
-#define Seg_g_Pin LL_GPIO_PIN_2
-#define Seg_g_GPIO_Port GPIOA
 #define SA4_Pin LL_GPIO_PIN_3
 #define SA4_GPIO_Port GPIOA
 #define SA6_Pin LL_GPIO_PIN_4
