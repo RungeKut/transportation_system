@@ -106,9 +106,9 @@ extern volatile BDC_PWM_FreqencyTypeDef BDC_PWM_Freqency;
 /**********Begin*****Установка параметров разгрузки*********/
 #define F_CPU           32e6   //частота процессора
 #define MIN_FREQ        20     //минимальная частота, Гц сигнала step
-#define MAX_FREQ_RPM    100    //максимальная частота, об/мин
+#define MAX_FREQ_RPM    145    //максимальная частота, об/мин
 #define ACCELERATION    5000   //максимальное ускорение, Гц/сек2 сигнала step
-#define ACCELERATION_EN 1      //включить/отключить ускорение
+#define ACCELERATION_EN 0      //включить/отключить ускорение
 #define MIN_WEIGHT      5      //минимальная сила разгрузки, кг
 #define MAX_WEIGHT      70     //максимальная сила разгрузки, кг
 #define MAX_STEP        573000 //максимальная число шагов, шт

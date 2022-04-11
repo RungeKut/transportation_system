@@ -31,7 +31,7 @@ void step_StartUp(void)//																										 ┃
 void ON_STEP_TIMER(TIM_TypeDef *TIMA, TIM_TypeDef *TIMS)//                   ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
-  if (!(LL_TIM_IsEnabledCounter(TIMA)) || (ACCELERATION_EN != 0))
+  if (!(LL_TIM_IsEnabledCounter(TIMA)) && (ACCELERATION_EN != 0))
   {
 //    NVIC_EnableIRQ(TIM21_IRQn);
     LL_TIM_ClearFlag_UPDATE(TIMA);
@@ -57,11 +57,14 @@ void ON_STEP_TIMER(TIM_TypeDef *TIMA, TIM_TypeDef *TIMS)//                   ┃
 void OFF_STEP_TIMER(TIM_TypeDef *TIMA, TIM_TypeDef *TIMS)//                  ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
+  if (ACCELERATION_EN != 0)
+  {
   if (LL_TIM_IsEnabledCounter(TIMA))
   {
 //    NVIC_DisableIRQ(TIM21_IRQn);
     LL_TIM_DisableCounter(TIMA);
 //    LL_TIM_DisableIT_UPDATE(TIMA);
+  }
   }
   if (LL_TIM_IsEnabledCounter(TIMS))
   {
@@ -90,7 +93,7 @@ void MOTOR_STOP(TIM_TypeDef *TIMA, TIM_TypeDef *TIMS, TIM_TypeDef *TIMSleep)
   if (!( GLOBAL_FLAG_TX & STOP_FLAG ))
   {
     GLOBAL_FLAG_TX |= STOPING_FLAG;
-    if ( Freq_step <= MIN_FREQ )
+    if (( Freq_step <= MIN_FREQ ) || (ACCELERATION_EN == 0))
     {
       GLOBAL_FLAG_TX |= STOP_FLAG;
       GLOBAL_FLAG_TX &= ~MOVE_UP_FLAG;
@@ -199,7 +202,10 @@ void Motor_Initialization (TIM_TypeDef *TIMA, TIM_TypeDef *TIMS, TIM_TypeDef *TI
           GLOBAL_FLAG_TX &= ~INITIALIZATION_FLAG;
           GLOBAL_FLAG_TX &= ~STOPING_FLAG;
           step = MAX_STEP;
-          Freq_step = MIN_FREQ;
+          if (ACCELERATION_EN != 0)
+          {
+            Freq_step = MIN_FREQ;
+          }
           keystrokeCounter = 0;
         }
   }
@@ -212,7 +218,10 @@ void Motor_Initialization (TIM_TypeDef *TIMA, TIM_TypeDef *TIMS, TIM_TypeDef *TI
           GLOBAL_FLAG_TX &= ~INITIALIZATION_FLAG;
           GLOBAL_FLAG_TX &= ~STOPING_FLAG;
           step = 0;
-          Freq_step = MIN_FREQ;
+          if (ACCELERATION_EN != 0)
+          {
+            Freq_step = MIN_FREQ;
+          }
           keystrokeCounter = 0;
         }
   }
