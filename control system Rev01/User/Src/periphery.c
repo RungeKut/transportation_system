@@ -143,7 +143,7 @@ void ButtonFlagControl(void)//                                               ┃
              ( battery > BATTERY_LIMIT ))
     {
       GLOBAL_FLAG_TX |= BUT_UP_FLAG;
-      //LL_GPIO_SetOutputPin(PP_UP_GPIO_Port,PP_UP_Pin);
+      LL_GPIO_SetOutputPin(PP_UP_GPIO_Port,PP_UP_Pin);
       LL_GPIO_SetOutputPin(PP_RIGHT_GPIO_Port,PP_RIGHT_Pin); //Исправления из-за сгоревшего процессора
       Sleep_Reset();
     }
@@ -231,7 +231,7 @@ void ButtonFlagControl(void)//                                               ┃
     }
     else if (delayCounter_flag == 0)
     {
-      //LL_GPIO_ResetOutputPin(PP_UP_GPIO_Port,PP_UP_Pin);
+      LL_GPIO_ResetOutputPin(PP_UP_GPIO_Port,PP_UP_Pin);
       LL_GPIO_ResetOutputPin(PP_DOWN_GPIO_Port,PP_DOWN_Pin);
       LL_GPIO_ResetOutputPin(PP_RIGHT_GPIO_Port,PP_RIGHT_Pin); //Исправления из-за сгоревшего процессора
       GLOBAL_FLAG_TX &= ~(  BUT_UP_FLAG          |

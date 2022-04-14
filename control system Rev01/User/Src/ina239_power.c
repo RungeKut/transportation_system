@@ -84,7 +84,7 @@ void ina239_StartUp(void)//                                                  ┃
       flashPage_write32(FloatToUint(RemainBatCapacity_mWh), 1024);
     }
   }
-  else if (INA_Current_mA < 0)
+  else if (INA_Current_mA < (float)(-100)) //Если ток заряда меньше 100мА то считаем зарядку оконченой
   {
     if (Battery_Status < BAT_ERR_MISSING)
       Battery_Status = CHARGING;
@@ -101,8 +101,7 @@ void ina239_StartUp(void)//                                                  ┃
   {
     if ((GLOBAL_FLASH_FLAG & EnableWrite_FLASH) &&
         (Battery_Status != END_CHARGE) &&
-        (INA_Current_mA_temp < 0)               &&
-        (INA_Current_mA == 0))
+        (INA_Current_mA_temp < 0))
     {
     
       RemainBatCapacity_mWh = (float)BatCapacity_mWh;
