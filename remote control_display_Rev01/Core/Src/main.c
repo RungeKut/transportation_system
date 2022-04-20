@@ -117,6 +117,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  LL_GPIO_SetOutputPin(Led1_GPIO_Port, Led1_Pin);
+	LL_GPIO_SetOutputPin(Led2_GPIO_Port, Led2_Pin);
+	LL_GPIO_SetOutputPin(Led3_GPIO_Port, Led3_Pin);
   MX_DMA_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();

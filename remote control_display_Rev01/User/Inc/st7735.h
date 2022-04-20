@@ -96,6 +96,7 @@ extern uint8_t *disp_p[];
 // Объявления функций управления
 //-----------------------------------------------------------------------------/
 void st7735_StartUp(void);
+void lcd_reinit(void);
 
 //Разрешаем работу DWT(Data Watchpoint) счетчика
 void delaySetNs(uint32_t ns);
@@ -162,7 +163,13 @@ void lcd_st7735s_img8(const uint16_t x, const uint16_t y, const uint16_t w, cons
 void Convert2Array(uint8_t);
 
 // Верстка дисплея из картинок
-void DisplayOutMenu(uint8_t, uint8_t, uint8_t);
+void ResetTempNumbers(void);
+void DisplayOutMenu(void);
+void DisplayOutSpeed(uint8_t spd);
+void DisplayOutWeight(uint8_t wgt);
+void DisplayOutAvailableChargeIcon(uint8_t bat);
+void DisplayOutAvailableChargeNumb(uint8_t bat);
+void DisplayOutChargingIcon(uint8_t bat);
 void DisplayOutPrepering(void);
 void DisplayOutStop(void);
 void DisplayOutLowBattery(void);

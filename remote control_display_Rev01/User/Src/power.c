@@ -41,11 +41,11 @@ void GoToStandbyMode(void)
 {
   LL_PWR_EnableWakeUpPin(LL_PWR_WAKEUP_PIN2);
   
-  LL_IWDG_EnableWriteAccess(IWDG);
+/*  LL_IWDG_EnableWriteAccess(IWDG);
   LL_IWDG_SetPrescaler(IWDG, LL_IWDG_PRESCALER_256);
   LL_IWDG_SetReloadCounter(IWDG, 0xFFFF);
   LL_IWDG_SetWindow(IWDG, 0xFFFF);
-  LL_IWDG_DisableWriteAccess(IWDG);
+  LL_IWDG_DisableWriteAccess(IWDG);*/
   
   LL_GPIO_ResetOutputPin(Seg_c_Disp_BackLight_GPIO_Port, Seg_c_Disp_BackLight_Pin);
   delayNs();						// пауза

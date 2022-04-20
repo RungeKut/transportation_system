@@ -12,29 +12,39 @@ volatile uint8_t digits[3] = {0,0,0};
 uint8_t *disp_w[10] = {&width_dig0, &width_dig1, &width_dig2, &width_dig3, &width_dig4, &width_dig5, &width_dig6, &width_dig7, &width_dig8, &width_dig9};
 uint8_t *disp_h[10] = {&height_dig0, &height_dig1, &height_dig2, &height_dig3, &height_dig4, &height_dig5, &height_dig6, &height_dig7, &height_dig8, &height_dig9};
 uint8_t *disp_p[10] = {(uint8_t *)dig0, (uint8_t *)dig1, (uint8_t *)dig2, (uint8_t *)dig3, (uint8_t *)dig4, (uint8_t *)dig5, (uint8_t *)dig6, (uint8_t *)dig7, (uint8_t *)dig8, (uint8_t *)dig9};
-volatile uint8_t Display_Status;
 volatile Display_StatusTypeDef Display_Status = CLEAR;
 volatile uint8_t Charger_Status = 0;
 volatile uint8_t DisplayOutLowBattery_Status = 0;
+uint8_t temp_bat = 250;
+uint8_t temp_spd = 250;
+uint8_t temp_wgt = 250;
   
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
 void st7735_StartUp(void)//                                                  ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/  
 {
-	lcd_st7735s_CS_1();
 	LL_SPI_Enable(SPI1);
 	LL_SPI_TransmitData16(SPI1, 0x01FF);
 	lcd_st7735s_init();
 	delaySetNs(1000);
 	LL_GPIO_SetOutputPin(Seg_c_Disp_BackLight_GPIO_Port, Seg_c_Disp_BackLight_Pin);
-	LL_GPIO_SetOutputPin(Led1_GPIO_Port, Led1_Pin);
-	LL_GPIO_SetOutputPin(Led2_GPIO_Port, Led2_Pin);
-	LL_GPIO_SetOutputPin(Led3_GPIO_Port, Led3_Pin);
 	lcd_st7735s_fillrect(0,0,127,159,0xFFFF);
 	lcd_st7735s_img8(100,117, width_bat_img, height_bat_img, bat_img);
 	lcd_st7735s_img8(70,57, width_speed_img, height_speed_img, speed_img);
 	lcd_st7735s_img8(70,7, width_weight_img, height_weight_img, weight_img); 
 //  lcd_st7735s_img(104,120, width_charge_img, height_charge_img, charge_img);
+}
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
+void lcd_reinit(void)//                                                      ┃
+/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/  
+{
+  lcd_st7735s_init();
+	delaySetNs(1000);
+	LL_GPIO_SetOutputPin(Seg_c_Disp_BackLight_GPIO_Port, Seg_c_Disp_BackLight_Pin);
+	lcd_st7735s_fillrect(0,0,127,159,0xFFFF);
+	lcd_st7735s_img8(100,117, width_bat_img, height_bat_img, bat_img);
+	lcd_st7735s_img8(70,57, width_speed_img, height_speed_img, speed_img);
+	lcd_st7735s_img8(70,7, width_weight_img, height_weight_img, weight_img); 
 }
 void delaySetNs(uint32_t ns)
 {
@@ -55,6 +65,7 @@ inline void delayNs(void)
 void lcd_st7735s_CS_0(void)
 {
 	LL_GPIO_ResetOutputPin(Seg_2_Disp_CS_GPIO_Port, Seg_2_Disp_CS_Pin);
+  delayNs();
 }
 
 //Установка высокого уровня ChipSelect
@@ -461,92 +472,122 @@ void Convert2Array(uint8_t num) //Конвертирует десятичное 
 	return;
 };
 /*----------------------------------------------------------------*/
-void DisplayOutMenu(uint8_t bat, uint8_t spd, uint8_t wgt) //Выводит меню
+void ResetTempNumbers(void) //Выводит меню
 /*----------------------------------------------------------------*/
 {
-  if ( Display_Status != MENU )
+  temp_bat = 250;
+  temp_spd = 250;
+  temp_wgt = 250;
+}
+/*----------------------------------------------------------------*/
+void DisplayOutMenu(void) //Выводит меню
+/*----------------------------------------------------------------*/
+{
+  lcd_st7735s_CS_0();
+  lcd_st7735s_fillrect(0,0,127,159,rgb8_to_rgb16[0xFF]);
+  lcd_st7735s_img8(100,116, width_bat_img, height_bat_img, bat_img);
+  lcd_st7735s_img8(70,57, width_speed_img, height_speed_img, speed_img);
+  lcd_st7735s_img8(70,7, width_weight_img, height_weight_img, weight_img);
+  DisplayOutLowBattery_Status = 0;
+  lcd_st7735s_CS_1();
+}
+/*----------------------------------------------------------------*/
+void DisplayOutSpeed(uint8_t spd) //Выводит скорость
+/*----------------------------------------------------------------*/
+{
+  lcd_st7735s_CS_0();
+  Convert2Array(spd);
+  lcd_st7735s_img8(39,62, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
+  lcd_st7735s_img8(12,62, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
+  lcd_st7735s_CS_1();
+}
+/*----------------------------------------------------------------*/
+void DisplayOutWeight(uint8_t wgt) //Выводит силу
+/*----------------------------------------------------------------*/
+{
+  lcd_st7735s_CS_0();
+  Convert2Array(wgt);
+  lcd_st7735s_img8(39,7, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
+  lcd_st7735s_img8(12,7, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
+  lcd_st7735s_CS_1();
+}
+/*----------------------------------------------------------------*/
+void DisplayOutAvailableChargeIcon(uint8_t bat) //Выводит иконку остаточный заряд батареи
+/*----------------------------------------------------------------*/
+{
+  lcd_st7735s_CS_0();
+  if (bat > 15) 
   {
-    lcd_st7735s_fillrect(0,0,127,159,rgb8_to_rgb16[0xFF]);
-    lcd_st7735s_img8(100,116, width_bat_img, height_bat_img, bat_img);
-    lcd_st7735s_img8(70,57, width_speed_img, height_speed_img, speed_img);
-    lcd_st7735s_img8(70,7, width_weight_img, height_weight_img, weight_img);
-    Display_Status = MENU;
-    DisplayOutLowBattery_Status = 0;
+    lcd_st7735s_fillrect(104,(120 + bat*24/100 ),113,143,0xFFFF);
+    lcd_st7735s_fillrect(104,120,113,(119 + bat*24/100 ),0x65DC);
+  }
+  else if ((bat <= 15) && (bat >= 5))
+  {
+    lcd_st7735s_fillrect(104,(120 + bat*24/100 ),113,143,0xFFFF);
+    lcd_st7735s_fillrect(104,120,113,(119 + bat*24/100 ),0xF800);
   }
   else
   {
-    Convert2Array(bat);
-    lcd_st7735s_img8(12,117, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
-    if (bat > 9)
+    lcd_st7735s_fillrect(104,121,113,143,0xFFFF);
+    lcd_st7735s_fillrect(104,120,113,120,0xF800);
+  }
+  DisplayOutAvailableChargeNumb(bat);
+  lcd_st7735s_CS_1();
+}
+/*----------------------------------------------------------------*/
+void DisplayOutAvailableChargeNumb(uint8_t bat) //Выводит иконку остаточный заряд батареи цифры
+/*----------------------------------------------------------------*/
+{
+  Convert2Array(bat);
+  lcd_st7735s_img8(12,117, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
+  if (bat > 9)
+  {
+    lcd_st7735s_img8(39,117, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
+    if (bat > 99)
     {
-      lcd_st7735s_img8(39,117, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
-      if (bat > 99)
-      {
-        lcd_st7735s_img8(66,117, *disp_w[digits[0]], *disp_h[digits[0]], disp_p[digits[0]]);
-      }
-      else
-      {
-        lcd_st7735s_fillrect(66,117,91,146,0xFFFF);
-      }
+      lcd_st7735s_img8(66,117, *disp_w[digits[0]], *disp_h[digits[0]], disp_p[digits[0]]);
     }
     else
     {
-      lcd_st7735s_fillrect(39,117,91,176,0xFFFF);
-    }
-    Convert2Array(spd);
-    lcd_st7735s_img8(39,62, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
-    lcd_st7735s_img8(12,62, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
-    Convert2Array(wgt);
-    lcd_st7735s_img8(39,7, *disp_w[digits[1]], *disp_h[digits[1]], disp_p[digits[1]]);
-    lcd_st7735s_img8(12,7, *disp_w[digits[2]], *disp_h[digits[2]], disp_p[digits[2]]);
-    
-    if (GLOBAL_CHARGE_FLAG & CHARGING_FLAG)
-    {
-      if (Charger_Status == 0)
-      {
-        Charger_Status = 1;
-        lcd_st7735s_img8(104,120, width_charge_img, height_charge_img, charge_img);
-        Sound_Play(track_charging);
-      }
-    }
-    else
-    {
-      Charger_Status = 0;
-      if (bat > 15) 
-      {
-        lcd_st7735s_fillrect(104,(120 + bat*24/100 ),113,143,0xFFFF);
-        lcd_st7735s_fillrect(104,120,113,(119 + bat*24/100 ),0x65DC);
-      }
-      else if ((bat <= 15) && (bat >= 5))
-      {
-        lcd_st7735s_fillrect(104,(120 + bat*24/100 ),113,143,0xFFFF);
-        lcd_st7735s_fillrect(104,120,113,(119 + bat*24/100 ),0xF800);
-      }
-      else
-      {
-        lcd_st7735s_fillrect(104,121,113,143,0xFFFF);
-        lcd_st7735s_fillrect(104,120,113,120,0xF800);
-      }
+      lcd_st7735s_fillrect(66,117,91,146,0xFFFF);
     }
   }
+  else
+  {
+    lcd_st7735s_fillrect(39,117,91,176,0xFFFF);
+  }
+}
+/*----------------------------------------------------------------*/
+void DisplayOutChargingIcon(uint8_t bat) //Выводит иконку батарейки
+/*----------------------------------------------------------------*/
+{
+  lcd_st7735s_CS_0();
+  lcd_st7735s_img8(104,120, width_charge_img, height_charge_img, charge_img);
+  Sound_Play(track_charging);
+  lcd_st7735s_CS_1();
 }
 /*----------------------------------------------------------------*/
 void DisplayOutPrepering(void) //Выводит экран подготовки
 /*----------------------------------------------------------------*/
 {
+  lcd_st7735s_CS_1();
   lcd_st7735s_fillrect(0,0,127,159,rgb8_to_rgb16[0x0F]);
   lcd_st7735s_img8(5,69, width_preparing_img, height_preparing_img, preparing_img);
+  lcd_st7735s_CS_1();
 }
 /*----------------------------------------------------------------*/
 void DisplayOutStop(void) //Выводит Аварийный экран
 /*----------------------------------------------------------------*/
 {
+  lcd_st7735s_CS_0();
   lcd_st7735s_img8(0,0, width_stop_img, height_stop_img, stop_img);
+  lcd_st7735s_CS_1();
 }
 /*----------------------------------------------------------------*/
 void DisplayOutLowBattery(void) //Выводит сообщение о низком заряде
 /*----------------------------------------------------------------*/
 {
+  lcd_st7735s_CS_0();
   lcd_st7735s_fillrect(0,0,127,159,rgb8_to_rgb16[0xFF]);
   lcd_st7735s_img8(3,51, width_lowbattery_img, height_lowbattery_img, lowbattery_img);
   if (DisplayOutLowBattery_Status == 0)
@@ -554,6 +595,7 @@ void DisplayOutLowBattery(void) //Выводит сообщение о низк�
     DisplayOutLowBattery_Status = 1;
     Sound_Play(track_charge);
   }
+  lcd_st7735s_CS_1();
 }
 /*----------------------------------------------------------------*/
 void DisplayOut(uint8_t bat, uint8_t spd, uint8_t wgt)
@@ -565,6 +607,7 @@ void DisplayOut(uint8_t bat, uint8_t spd, uint8_t wgt)
     {
       DisplayOutStop();
       Display_Status = STOP;
+      ResetTempNumbers();
     }
   }
   else if ( GLOBAL_FLAG_RX & INITIALIZATION_FLAG )
@@ -573,6 +616,7 @@ void DisplayOut(uint8_t bat, uint8_t spd, uint8_t wgt)
     {
       DisplayOutPrepering();
       Display_Status = PREPERING;
+      ResetTempNumbers();
     }
   }
   else if (( LL_TIM_GetCounter(TIM_Sleep) == 20 )  &&
@@ -583,15 +627,41 @@ void DisplayOut(uint8_t bat, uint8_t spd, uint8_t wgt)
     {
       DisplayOutLowBattery();
       Display_Status = LOW_BAT;
+      ResetTempNumbers();
     }
   }
-  else if ( Display_Status != LOW_BAT )
+  else if (( Charger_Status == 0 )  &&
+           ( GLOBAL_CHARGE_FLAG & CHARGING_FLAG ))
   {
-    DisplayOutMenu(bat, spd, wgt);
+    DisplayOutChargingIcon(bat);
+    Charger_Status = 1;
   }
-  else if (( NumFlagSleepDeny != 0 ) ||
+  else if (( Display_Status != MENU )  &&
+           ( Display_Status != LOW_BAT ))
+  {
+    DisplayOutMenu();
+    Display_Status = MENU;
+  }
+  else if (( bat != temp_bat )  &&
+           (!(GLOBAL_CHARGE_FLAG & CHARGING_FLAG )))
+  {
+    DisplayOutAvailableChargeIcon(bat);
+    Charger_Status = 0;
+    temp_bat = bat;
+  }
+  else if ( spd != temp_spd )
+  {
+    DisplayOutSpeed(spd);
+    temp_spd = spd;
+  }
+  else if ( wgt != temp_wgt )
+  {
+    DisplayOutWeight(wgt);
+    temp_wgt = wgt;
+  }
+ /* else if (( NumFlagSleepDeny != 0 ) ||
           (GLOBAL_CHARGE_FLAG & CHARGING_FLAG))
   {
     Display_Status = CLEAR;
-  }
+  }*/
 }
