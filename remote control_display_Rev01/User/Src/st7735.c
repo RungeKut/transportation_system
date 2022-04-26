@@ -23,28 +23,12 @@ uint8_t temp_wgt = 250;
 void st7735_StartUp(void)//                                                  ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/  
 {
+  delaySetNs(1000);
 	LL_SPI_Enable(SPI1);
 	LL_SPI_TransmitData16(SPI1, 0x01FF);
-	lcd_st7735s_init();
-	delaySetNs(1000);
-	LL_GPIO_SetOutputPin(Seg_c_Disp_BackLight_GPIO_Port, Seg_c_Disp_BackLight_Pin);
-	lcd_st7735s_fillrect(0,0,127,159,0xFFFF);
-	lcd_st7735s_img8(100,117, width_bat_img, height_bat_img, bat_img);
-	lcd_st7735s_img8(70,57, width_speed_img, height_speed_img, speed_img);
-	lcd_st7735s_img8(70,7, width_weight_img, height_weight_img, weight_img); 
-//  lcd_st7735s_img(104,120, width_charge_img, height_charge_img, charge_img);
-}
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
-void lcd_reinit(void)//                                                      ┃
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/  
-{
   lcd_st7735s_init();
-	delaySetNs(1000);
-	LL_GPIO_SetOutputPin(Seg_c_Disp_BackLight_GPIO_Port, Seg_c_Disp_BackLight_Pin);
-	lcd_st7735s_fillrect(0,0,127,159,0xFFFF);
-	lcd_st7735s_img8(100,117, width_bat_img, height_bat_img, bat_img);
-	lcd_st7735s_img8(70,57, width_speed_img, height_speed_img, speed_img);
-	lcd_st7735s_img8(70,7, width_weight_img, height_weight_img, weight_img); 
+  delayNs();
+  LL_GPIO_SetOutputPin(Seg_c_Disp_BackLight_GPIO_Port, Seg_c_Disp_BackLight_Pin);
 }
 void delaySetNs(uint32_t ns)
 {
@@ -135,16 +119,13 @@ void lcd_st7735s_at(uint8_t startX, uint8_t startY, uint8_t stopX, uint8_t stopY
 void lcd_st7735s_init(void) 
 {
 	// аппаратный сброс дисплея
-//	lcd_st7735s_CS_1();		// CS=1
-//	delayNs();						// пауза
-//	lcd_st7735s_RES_0();	// RST=0
-	delayNs();						// пауза
+  delayNs();						// пауза
   lcd_st7735s_RES_1();	// RST=1
-	LL_mDelay(1);						// пауза
+	LL_mDelay(1);
+						// пауза
 	lcd_st7735s_CS_0();		// CS=0
-	delayNs();
-	
-	// инициализация дисплея
+  delayNs();
+// инициализация дисплея
 	lcd_st7735s_send_cmd(ST7735S_SLPOUT);	// после сброса дисплей спит - даем команду проснуться
 	LL_mDelay(1);														// пауза
 	lcd_st7735s_send_cmd(ST7735S_COLMOD);	// режим цвета:
@@ -153,7 +134,8 @@ void lcd_st7735s_init(void)
 	lcd_st7735s_send_data(0x1C);	// снизу вверх, справа на лево, порядок цветов RGB
 //	lcd_st7735s_send_cmd(ST7735S_TEON);
 	lcd_st7735s_send_cmd(ST7735S_DISPON);	// включаем изображение
-//	lcd_st7735s_CS_1();		// CS=1
+  delayNs();
+	lcd_st7735s_CS_1();		// CS=1
 }
 
 // Функция заполнения прямоугольной области экрана заданным цветом
@@ -570,7 +552,7 @@ void DisplayOutChargingIcon(uint8_t bat) //Выводит иконку бата�
 void DisplayOutPrepering(void) //Выводит экран подготовки
 /*----------------------------------------------------------------*/
 {
-  lcd_st7735s_CS_1();
+  lcd_st7735s_CS_0();
   lcd_st7735s_fillrect(0,0,127,159,rgb8_to_rgb16[0x0F]);
   lcd_st7735s_img8(5,69, width_preparing_img, height_preparing_img, preparing_img);
   lcd_st7735s_CS_1();

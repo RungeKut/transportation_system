@@ -1,6 +1,8 @@
 #include "rs485.h"
 #include "main.h"
 
+//volatile RS485_StatusTypeDef RS485_Status = ;
+
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
 //                                                                           ┃
 void DMA_Init(DMA_Channel_TypeDef* Channel, uint32_t Perif, uint32_t Mem, uint16_t Size, uint16_t Conf)
@@ -292,7 +294,10 @@ void CorrectRX(void)//                                                       ┃
 	}
 	battery = rx_str[11];
 	weight  = rx_str[12];
-	speed   = rx_str[13];
+  if (!(GLOBAL_FLAG_TX & TEST_FLAG) )
+  {
+	  speed   = rx_str[13];
+  }
 
 	GLOBAL_FLAG_RX = (rx_str[7]  << 24) +
                    (rx_str[8]  << 16) +
@@ -306,7 +311,7 @@ void CorrectRX(void)//                                                       ┃
 void CorrectTX(void)//                                                       ┃
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 {
-	tx_str[15] = GLOBAL_FLAG_TX >> 24;
+	tx_str[15] = (GLOBAL_FLAG_TX >> 24) & 0xFD;// не отправлять флаг тестового режима
 	tx_str[16] = (GLOBAL_FLAG_TX << 8) >> 24;
 	tx_str[17] = (GLOBAL_FLAG_TX << 16) >> 24;
 	tx_str[18] = GLOBAL_FLAG_TX;

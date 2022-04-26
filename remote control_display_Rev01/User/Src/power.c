@@ -128,7 +128,7 @@ void ResetTIM_Sleep(void)
                                                 BUT_WEAK_FLAG             |
                                                 BUT_SPEED_UP_FLAG         |
                                                 BUT_SPEED_DOWN_FLAG       |
-                                                TEST_SCREW_FLAG           |
+                                             //   TEST_FLAG                 |
                                                 INITIALIZATION_FLAG       |
                                                 STOPING_FLAG              |
                                                 CARRIAGE_CALIBRATION_FLAG |

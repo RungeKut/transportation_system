@@ -2,6 +2,8 @@
 #include "main.h"
 
 volatile Button_StatusTypeDef Button_Status = BUT_OK;
+uint8_t keyTempNumber = 0;
+uint32_t TempTimer = 0;
 
 /*----------------------------------------------------------------*/
 void Vibro_touch(void) 
@@ -217,5 +219,91 @@ void ScanButton(void)
 	}*/
   
 	return;
+}
+/*----------------------------------------------------------------*/
+//Имитация нажатия кнопок пульта при тестировании
+void TestButtonPress(void)
+/*----------------------------------------------------------------*/
+{
+  if ( (keyTempNumber % 2) > 0 )
+  {
+    TempTimer = TempTimer + 50;
+  }
+  else
+  {
+    TempTimer++;
+  }
+  if ( TempTimer < 10000000 ) return;
+  TempTimer = 0;
+   if	((LL_GPIO_IsInputPinSet(SA1_GPIO_Port, SA1_Pin) == 1) &&
+       (LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1))
+  {
+    GLOBAL_FLAG_TX &= ~TEST_FLAG;
+  }
+  keyTempNumber++;
+  if ( keyTempNumber > 12 ) keyTempNumber = 1;
+  switch(keyTempNumber)
+  {
+    case 1:
+      GLOBAL_FLAG_TX &= ~BUT_STRONG_FLAG;
+      Button_Status = BUT_OK;
+      Sound_PWM(2500, 1);
+    break;
+    case 2:
+      GLOBAL_FLAG_TX |= BUT_UP_FLAG;
+      Button_Status = BUT_UP;
+      Sound_PWM(2000, 1);
+    break;
+    case 3:
+      GLOBAL_FLAG_TX &= ~BUT_UP_FLAG;
+      Button_Status = BUT_OK;
+      Sound_PWM(2500, 1);
+    break;
+    case 4:
+      GLOBAL_FLAG_TX |= BUT_DOWN_FLAG;
+      Button_Status = BUT_DOWN;
+      Sound_PWM(2000, 1);
+    break;
+    case 5:
+      GLOBAL_FLAG_TX &= ~BUT_DOWN_FLAG;
+      Button_Status = BUT_OK;
+      Sound_PWM(2500, 1);
+    break;
+    case 6:
+      GLOBAL_FLAG_TX |= BUT_BACKWARD_FLAG;
+      Button_Status = BUT_BACKWARD;
+      Sound_PWM(2000, 1);
+    break;
+    case 7:
+      GLOBAL_FLAG_TX &= ~BUT_BACKWARD_FLAG;
+      Button_Status = BUT_OK;
+      Sound_PWM(2500, 1);
+    break;
+    case 8:
+      GLOBAL_FLAG_TX |= BUT_FORWARD_FLAG;
+      Button_Status = BUT_FORWARD;
+      Sound_PWM(2000, 1);
+    break;
+    case 9:
+      GLOBAL_FLAG_TX &= ~BUT_FORWARD_FLAG;
+      Button_Status = BUT_OK;
+      Sound_PWM(2500, 1);
+    break;
+    case 10:
+      GLOBAL_FLAG_TX |= BUT_WEAK_FLAG;
+      Button_Status = BUT_WEAK;
+      Sound_PWM(2000, 1);
+    break;
+    case 11:
+      GLOBAL_FLAG_TX &= ~BUT_WEAK_FLAG;
+      Button_Status = BUT_OK;
+      Sound_PWM(2500, 1);
+    break;
+    case 12:
+      GLOBAL_FLAG_TX |= BUT_STRONG_FLAG;
+      Button_Status = BUT_STRONG;
+      Sound_PWM(2000, 1);
+    break;
+  }
 }
 

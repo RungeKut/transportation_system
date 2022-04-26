@@ -106,7 +106,7 @@ void ButtonFlagControl(void)//                                               ┃
                   (_Bool)( GLOBAL_FLAG_RX & BUT_WEAK_FLAG             )+
                   (_Bool)( GLOBAL_FLAG_RX & BUT_SPEED_UP_FLAG         )+
                   (_Bool)( GLOBAL_FLAG_RX & BUT_SPEED_DOWN_FLAG       )+
-                  (_Bool)( GLOBAL_FLAG_TX & TEST_SCREW_FLAG           )+
+ //                 (_Bool)( GLOBAL_FLAG_TX & TEST_SCREW_FLAG           )+
                   (_Bool)( GLOBAL_FLAG_TX & INITIALIZATION_FLAG       )+
  //                 (_Bool)( GLOBAL_FLAG_TX & STOPING_FLAG              )+
                   (_Bool)( GLOBAL_FLAG_TX & CARRIAGE_CALIBRATION_FLAG )+

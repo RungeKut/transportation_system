@@ -21,5 +21,6 @@ extern volatile Button_StatusTypeDef Button_Status;
 
 void Vibro_touch(void);
 void ScanButton(void);
+void TestButtonPress(void);
 
 #endif /* PERIPHERY_H */

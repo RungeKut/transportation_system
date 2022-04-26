@@ -62,6 +62,18 @@
 #define M2M_Enable (1<<14)
 #define M2M_Disable 0
 
+/**********Begin**********RS485_Status********************/
+/*typedef enum
+{
+  MENU         = 0x01, //На экране меню
+  PREPERING    = 0x03, //На экране подготовка
+  STOP         = 0x05, //На экране Авария
+  LOW_BAT      = 0x07, //На экране Низкий заряд сообщение
+  CLEAR        = 0xFF  //Дисплей должен быть перерисован
+} RS485_StatusTypeDef;
+extern volatile RS485_StatusTypeDef RS485_Status;*/
+/**********End************RS485_Status********************/
+
 /* BEGIN Prototypes */
 void DMA_Init(DMA_Channel_TypeDef* Channel, uint32_t Perif, uint32_t Mem, uint16_t Size, uint16_t Conf);
 void DMA_Enable(DMA_Channel_TypeDef* Channel);

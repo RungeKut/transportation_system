@@ -49,7 +49,7 @@
 #define DC_DC_SW_FLAG              0x00800000 //Силовой ключ замкнут
 
 #define CARRIAGE_CALIBRATION_FLAG  0x01000000 //Подсчет количества шагов м/у концевиками
-#define TEST_SCREW_FLAG            0x02000000 //Карретка катается от концевика к концевику.
+#define TEST_FLAG                  0x02000000 //Тест моторов, имитация нажатия кнопок на пульте 10сек
 #define DRV_ENABLE_FLAG            0x04000000 //Step driver enable in
 #define BUT_SPEED_UP_FLAG          0x08000000 //Кнопка скорость каретки увеличить
 

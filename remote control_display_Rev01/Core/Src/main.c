@@ -29,7 +29,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#pragma import(__use_no_heap_region) //Запрет на использование кучи
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -117,36 +117,64 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  LL_GPIO_ResetOutputPin(Seg_c_Disp_BackLight_GPIO_Port, Seg_c_Disp_BackLight_Pin);
   LL_GPIO_SetOutputPin(Led1_GPIO_Port, Led1_Pin);
 	LL_GPIO_SetOutputPin(Led2_GPIO_Port, Led2_Pin);
 	LL_GPIO_SetOutputPin(Led3_GPIO_Port, Led3_Pin);
+  LL_mDelay(10);
+  GLOBAL_FLAG_TX |= TEST_FLAG;
+  if	((LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1) &&
+       (LL_GPIO_IsInputPinSet(SA6_GPIO_Port, SA6_Pin) == 1) &&
+       (LL_GPIO_IsInputPinSet(SA7_GPIO_Port, SA7_Pin) == 1))
+  {
+    LL_IWDG_ReloadCounter(IWDG);
+    GLOBAL_FLAG_TX |= TEST_FLAG;
+  }
+  MX_SPI1_Init();
   MX_DMA_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_USART1_UART_Init();
-  MX_SPI1_Init();
+  
   MX_CRC_Init();
-  MX_IWDG_Init();
-  MX_TIM15_Init();
+  if (!(GLOBAL_FLAG_TX & TEST_FLAG) )
+  {
+    MX_IWDG_Init();
+    MX_TIM15_Init();
+    SleepAfterWatchDog();
+  }
+  else
+  {
+    Sound_PWM(4000, 10);
+  }
+  
   /* USER CODE BEGIN 2 */
 
-  SleepAfterWatchDog();
+  
 	StartUpConfig();
  // Sound_Play(track_sw);
+ // LL_mDelay(500);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    ScanButton();
+    if (!(GLOBAL_FLAG_TX & TEST_FLAG) )
+    {
+      ScanButton();
+      ResetTIM_Sleep();
+      LL_IWDG_ReloadCounter(IWDG);
+    }
+    else
+    {
+      TestButtonPress();
+    }
     DisplayOut(battery, speed, weight);
-    ResetTIM_Sleep();
     Sound_Player((uint8_t *)Sound_track);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    LL_IWDG_ReloadCounter(IWDG);
   }
   /* USER CODE END 3 */
 }
