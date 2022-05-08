@@ -84,7 +84,7 @@
 #define bufferSize         PACK_SIZE + CRC_SIZE
 #define TIM_Sound          TIM3               //Таймер для генерации PWM звука
 #define TIM_Sound_CH       LL_TIM_CHANNEL_CH1
-#define TIM_Sound_PSC      359
+extern uint16_t TIM_Sound_PSC;
 #define TIM_Sound_ARR      2
 #define Sound_bpm          10
 /* Port END */

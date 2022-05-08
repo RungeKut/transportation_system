@@ -121,8 +121,8 @@ int main(void)
   LL_GPIO_SetOutputPin(Led1_GPIO_Port, Led1_Pin);
 	LL_GPIO_SetOutputPin(Led2_GPIO_Port, Led2_Pin);
 	LL_GPIO_SetOutputPin(Led3_GPIO_Port, Led3_Pin);
-  LL_mDelay(10);
-  GLOBAL_FLAG_TX |= TEST_FLAG;
+  LL_mDelay(100);
+  //GLOBAL_FLAG_TX |= TEST_FLAG;
   if	((LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1) &&
        (LL_GPIO_IsInputPinSet(SA6_GPIO_Port, SA6_Pin) == 1) &&
        (LL_GPIO_IsInputPinSet(SA7_GPIO_Port, SA7_Pin) == 1))
@@ -145,7 +145,11 @@ int main(void)
   }
   else
   {
-    Sound_PWM(4000, 10);
+//    speed = 0;
+    Sound_PWM(4000, 30);
+//    LL_TIM_SetPrescaler(TIM_Sound, 2000);
+//    Sound_Play(track_sw);
+//    LL_TIM_SetPrescaler(TIM_Sound, 359);
   }
   
   /* USER CODE BEGIN 2 */

@@ -233,7 +233,7 @@ void TestButtonPress(void)
   {
     TempTimer++;
   }
-  if ( TempTimer < 10000000 ) return;
+  if ( TempTimer < 5000000 ) return;
   TempTimer = 0;
    if	((LL_GPIO_IsInputPinSet(SA1_GPIO_Port, SA1_Pin) == 1) &&
        (LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1))
@@ -248,6 +248,7 @@ void TestButtonPress(void)
       GLOBAL_FLAG_TX &= ~BUT_STRONG_FLAG;
       Button_Status = BUT_OK;
       Sound_PWM(2500, 1);
+ //     speed++;
     break;
     case 2:
       GLOBAL_FLAG_TX |= BUT_UP_FLAG;

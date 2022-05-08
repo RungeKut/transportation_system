@@ -3,6 +3,7 @@
 
 volatile Sound_StatusTypeDef Sound_Status = Sound_OK;
 
+// Треки 5bit - номер ноты 3bit - длительность
 uint8_t track_up[6] = {5, 0x09, 0x01, 0x19, 0x01, 0x29};
 uint8_t track_down[6] = {5, 0x29, 0x01, 0x19, 0x01, 0x09};
 uint8_t track_charging[4] = {3, 0x0F, 0x07, 0x0F};
@@ -90,6 +91,7 @@ void Sound_Player(uint8_t *track)
     Sound_Status = Sound_OK;
     return;
   }
+  // Номер ноты
   MidiNum = track[Sound_Num - (Sound_count - 1)] >> 3;
   uint32_t freq;
   if (MidiNum == 0)
@@ -100,6 +102,7 @@ void Sound_Player(uint8_t *track)
   {
     freq = MidiNum_to_freq[MidiNum];
   }
+  // Номер паузы
   uint16_t time = track[Sound_Num - (Sound_count - 1)] & 0x07;
   if (time >= 7) time = 30;
   Sound_PWM(freq, time);

@@ -148,24 +148,7 @@
           <Name>-U-O142 -O2254 -SF10000 -C0 -A0 -I0 -HNlocalhost -HP7184 -P1 -N00("ARM CoreSight SW-DP (ARM Core") -D00(2BA01477) -L00(0) -TO131090 -TC10000000 -TT10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC800 -FN1 -FF0STM32F3xx_256.FLM -FS08000000 -FL010000 -FP0($$Device:STM32F334C8Tx$CMSIS\Flash\STM32F3xx_256.FLM)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>601</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134219216</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\User\Src\st7735.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\remote_control_display\../User/Src/st7735.c\601</Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -175,132 +158,122 @@
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>CRC_out</ItemText>
+          <ItemText>rx_str</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rx_str</ItemText>
+          <ItemText>battery,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>temp,0x10</ItemText>
+          <ItemText>GLOBAL_FLAG_RX</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>i,0x0A</ItemText>
+          <ItemText>DISPLAY_FLAG</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>battery,0x0A</ItemText>
+          <ItemText>NumFlagSleepDeny,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>GLOBAL_FLAG_RX</ItemText>
+          <ItemText>TIM3_FLAG,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>DISPLAY_FLAG</ItemText>
+          <ItemText>Display_Status,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>NumFlagSleepDeny,0x0A</ItemText>
+          <ItemText>Sound_time,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TIM3_FLAG,0x0A</ItemText>
+          <ItemText>Sound_tick,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>10</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Display_Status,0x0A</ItemText>
+          <ItemText>Sound_Status,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>11</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Sound_time,0x0A</ItemText>
+          <ItemText>Sound_count,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>12</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Sound_tick,0x0A</ItemText>
+          <ItemText>Sound_track,0x10</ItemText>
         </Ww>
         <Ww>
           <count>13</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Sound_Status,0x0A</ItemText>
+          <ItemText>MidiNum,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>14</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Sound_count,0x0A</ItemText>
+          <ItemText>time,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>15</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Sound_track,0x10</ItemText>
+          <ItemText>freq,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>16</count>
           <WinNumber>1</WinNumber>
-          <ItemText>MidiNum,0x0A</ItemText>
+          <ItemText>Sound_Num,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>17</count>
           <WinNumber>1</WinNumber>
-          <ItemText>time,0x0A</ItemText>
+          <ItemText>Button_Status</ItemText>
         </Ww>
         <Ww>
           <count>18</count>
           <WinNumber>1</WinNumber>
-          <ItemText>freq,0x0A</ItemText>
+          <ItemText>temp_bat,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>19</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Sound_Num,0x0A</ItemText>
+          <ItemText>temp_spd,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>20</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Button_Status</ItemText>
+          <ItemText>temp_wgt,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>21</count>
           <WinNumber>1</WinNumber>
-          <ItemText>temp_bat,0x0A</ItemText>
+          <ItemText>GLOBAL_FLAG_TX</ItemText>
         </Ww>
         <Ww>
           <count>22</count>
           <WinNumber>1</WinNumber>
-          <ItemText>temp_spd,0x0A</ItemText>
+          <ItemText>keyTempNumber,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>23</count>
           <WinNumber>1</WinNumber>
-          <ItemText>temp_wgt,0x0A</ItemText>
+          <ItemText>tx_str</ItemText>
         </Ww>
         <Ww>
           <count>24</count>
           <WinNumber>1</WinNumber>
-          <ItemText>GLOBAL_FLAG_TX</ItemText>
-        </Ww>
-        <Ww>
-          <count>25</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>keyTempNumber,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>26</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>tx_str</ItemText>
+          <ItemText>bat</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -346,6 +319,10 @@
       <pSingCmdsp></pSingCmdsp>
       <pMultCmdsp></pMultCmdsp>
       <SystemViewers>
+        <Entry>
+          <Name>System Viewer\SPI1</Name>
+          <WinId>35904</WinId>
+        </Entry>
         <Entry>
           <Name>System Viewer\TIM15</Name>
           <WinId>35905</WinId>
@@ -567,7 +544,7 @@
       <GroupNumber>3</GroupNumber>
       <FileNumber>16</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\User\Src\config.c</PathWithFileName>

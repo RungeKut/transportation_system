@@ -55,7 +55,7 @@ void MX_GPIO_Init(void)
 
   /**/
   LL_GPIO_ResetOutputPin(GPIOB, VIBRO_Pin|Seg_a_Disp_DC_Pin|Seg_e_Pin|Seg_f_Pin
-                          |Led2_Pin|Seg_c_Disp_BackLight_Pin|Seg_b_Pin|Seg_2_Disp_CS_Pin
+                          |Led2_Pin|/*Seg_c_Disp_BackLight_Pin|*/Seg_b_Pin|Seg_2_Disp_CS_Pin
                           |Seg_3_Disp_IMO_Pin|Led3_Pin);
 
   /**/
