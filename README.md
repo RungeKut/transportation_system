@@ -12,8 +12,6 @@ Dynamic unloading of human body weight.
 #### Citation
  
 #### Contacts
--  [bolshakov.s@madin.ru]
 
 +7-920-059-64-53
 
-At the moment, in development in progress.
