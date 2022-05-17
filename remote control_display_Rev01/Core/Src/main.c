@@ -145,7 +145,7 @@ int main(void)
   }
   else
   {
-//    speed = 0;
+//+++++    speed = 0;
     Sound_PWM(4000, 30);
 //    LL_TIM_SetPrescaler(TIM_Sound, 2000);
 //    Sound_Play(track_sw);

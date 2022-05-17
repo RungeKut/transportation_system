@@ -7,6 +7,7 @@ volatile uint32_t Encoder_Freqency = 0;  //mHz
 volatile uint16_t DutyToBDC = 0;
 volatile uint32_t Encoder_Speed = 0; // см/сек
 volatile uint32_t quantityCounter = 0;
+uint8_t SpeedEnable = 0;
 
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓*/
 //Старт                                                                      ┃
@@ -170,6 +171,9 @@ void bdc_ON(void)//                                                          ┃
   }
 
     CurrentBDC_GET();
+    if (BDC_mAmp > 300)
+      SpeedEnable = 1;
+    if (SpeedEnable == 1)
     Encoder_Speed_GET();
     Sleep_Reset();
     SetDutyCycleBDC(BDC_TIM, DutyToBDC);
@@ -206,6 +210,7 @@ void bdc_OFF(void)//                                                         ┃
     BOOST_DISABLE;
     DC_DC_SW_DISABLE;
     Encoder_Speed = 0;
+    SpeedEnable = 0;
     Encoder_Period = 0;
     Encoder_DutyCicle = 0;
     DutyToBDC = 0;

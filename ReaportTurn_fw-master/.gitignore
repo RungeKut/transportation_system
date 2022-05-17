@@ -1,0 +1,8 @@
+/.metadata
+/RemoteSystemsTempFiles
+.settings/
+Debug/
+Release/
+*.launch
+
+

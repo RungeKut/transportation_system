@@ -227,7 +227,7 @@ void TestButtonPress(void)
 {
   if ( (keyTempNumber % 2) > 0 )
   {
-    TempTimer = TempTimer + 50;
+    TempTimer = TempTimer + 4;
   }
   else
   {
@@ -307,4 +307,39 @@ void TestButtonPress(void)
     break;
   }
 }
-
+/*----------------------------------------------------------------*/
+//Имитация нажатия кнопок пульта, только подемник в одну сторону
+void TestLiftPCB_oneDirection(void)
+/*----------------------------------------------------------------*/
+{
+  if ( (keyTempNumber % 2) > 0 )
+  {
+    TempTimer = TempTimer + 4;
+  }
+  else
+  {
+    TempTimer++;
+  }
+  if ( TempTimer < 5000000 ) return;
+  TempTimer = 0;
+   if	((LL_GPIO_IsInputPinSet(SA1_GPIO_Port, SA1_Pin) == 1) &&
+       (LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1))
+  {
+    GLOBAL_FLAG_TX &= ~TEST_FLAG;
+  }
+  keyTempNumber++;
+  if ( keyTempNumber > 2 ) keyTempNumber = 1;
+  switch(keyTempNumber)
+  {
+    case 1:
+      GLOBAL_FLAG_TX &= ~BUT_UP_FLAG;
+      Button_Status = BUT_OK;
+      Sound_PWM(2500, 1);
+    break;
+    case 2:
+      GLOBAL_FLAG_TX |= BUT_UP_FLAG;
+      Button_Status = BUT_UP;
+      Sound_PWM(2000, 1);
+    break;
+  }
+}

@@ -115,7 +115,7 @@ extern volatile BDC_PWM_FreqencyTypeDef BDC_PWM_Freqency;
 #define MaxNumPush      50     //максимальное количество нажаний на пульт до переинициализации шагового двигателя, шт
 #define MAX_SPEED_BDC   50     //максимальная скорость карретки, см/сек
 #define MIN_SPEED_BDC   10     //минимальная скорость карретки, см/сек
-#define ENCODER_HOLES   8      //количесвто щелей диска энкодера, шт
+#define ENCODER_HOLES   20      //количесвто щелей диска энкодера, шт
 #define ENCODER_DIAM    12     //диаметр колеса в зацеплении с рельсой, см
 #define BATTERY_MAX_V   252    //напряжение полностью заряженного аккумулятора
 #define BATTERY_MIN_V   175    //напряжение полностью разряженного аккумулятора
