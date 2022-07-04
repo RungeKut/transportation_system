@@ -18,6 +18,7 @@ volatile uint32_t GLOBAL_FLAG_TX = 0;        //Набор для отправк�
 uint16_t TIM_Sound_PSC = 359;
 
 volatile uint8_t  GLOBAL_CHARGE_FLAG = 0;
+volatile uint32_t GLOBAL_TEST_FLAG = 0;
 
 void Config_SysTick(void)
 {

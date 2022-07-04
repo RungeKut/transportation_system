@@ -123,12 +123,33 @@ int main(void)
 	LL_GPIO_SetOutputPin(Led3_GPIO_Port, Led3_Pin);
   LL_mDelay(100);
   //GLOBAL_FLAG_TX |= TEST_FLAG;
-  if	((LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1) &&
-       (LL_GPIO_IsInputPinSet(SA6_GPIO_Port, SA6_Pin) == 1) &&
+  if	((LL_GPIO_IsInputPinSet(SA6_GPIO_Port, SA6_Pin) == 1) &&
        (LL_GPIO_IsInputPinSet(SA7_GPIO_Port, SA7_Pin) == 1))
   {
-    LL_IWDG_ReloadCounter(IWDG);
-    GLOBAL_FLAG_TX |= TEST_FLAG;
+    if (LL_GPIO_IsInputPinSet(SA1_GPIO_Port, SA1_Pin) == 1)
+    { //Тестирование всех моторов по очереди
+      LL_IWDG_ReloadCounter(IWDG);
+      GLOBAL_TEST_FLAG |= TEST_ALLMOTORS_FLAG;
+      GLOBAL_FLAG_TX |= TEST_FLAG;
+    }
+    else if (LL_GPIO_IsInputPinSet(SA2_GPIO_Port, SA2_Pin) == 1)
+    { //Тестирование ДПТ вперед-назад
+      LL_IWDG_ReloadCounter(IWDG);
+      GLOBAL_TEST_FLAG |= TEST_BDC_FLAG;
+      GLOBAL_FLAG_TX |= TEST_FLAG;
+    }
+    else if (LL_GPIO_IsInputPinSet(SA3_GPIO_Port, SA3_Pin) == 1)
+    { //Тестирование BLDC вверх-вниз
+      LL_IWDG_ReloadCounter(IWDG);
+      GLOBAL_TEST_FLAG |= TEST_BLDC_FLAG;
+      GLOBAL_FLAG_TX |= TEST_FLAG;
+    }
+    else if (LL_GPIO_IsInputPinSet(SA4_GPIO_Port, SA4_Pin) == 1)
+    { //Тестирование ШД сильнее-слабее
+      LL_IWDG_ReloadCounter(IWDG);
+      GLOBAL_TEST_FLAG |= TEST_STEP_FLAG;
+      GLOBAL_FLAG_TX |= TEST_FLAG;
+    }
   }
   MX_SPI1_Init();
   MX_DMA_Init();
@@ -145,7 +166,7 @@ int main(void)
   }
   else
   {
-//+++++    speed = 0;
+//    speed = 0;
     Sound_PWM(4000, 30);
 //    LL_TIM_SetPrescaler(TIM_Sound, 2000);
 //    Sound_Play(track_sw);

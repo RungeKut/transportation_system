@@ -60,15 +60,14 @@
 /**********Begin**********GLOBAL_CHARGE_FLAG********************/
 #define END_CHARGE_FLAG            0x00000001 //Зарядка завершена, устройство питается от зарядника
 #define CHARGING_FLAG              0x00000002 //Идет процесс зарядки
-//#define CHARGE_FLAG           0x00000004 //
-//#define CHARGE_FLAG          0x00000008 //
+/**********End************GLOBAL_CHARGE_FLAG********************/
 
-//#define CHARGE_FLAG            0x00000010 //
-//#define CHARGE_FLAG              0x00000020 //
-//#define CHARGE_FLAG        0x00000040 //
-//#define CHARGE_FLAG                  0x00000080 //
-/**********End**********GLOBAL_CHARGE_FLAG********************/
-
+/**********Begin**********GLOBAL_TEST_FLAG********************/
+#define TEST_ALLMOTORS_FLAG        0x00000001 //Тест всех моторов вперед-назад по очереди
+#define TEST_BDC_FLAG              0x00000002 //Тест мотора постоянного тока (каретка)
+#define TEST_BLDC_FLAG             0x00000004 //Тест BLDC (подъемник)
+#define TEST_STEP_FLAG             0x00000008 //Тест шагового двигателя (разгрузка)
+/**********End******88****GLOBAL_TEST_FLAG********************/
 
 #define SysTime 0x00 == (SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)
 
@@ -101,6 +100,7 @@ static const char rxStrKeyDown[16] = {0x20,0x54,0x72,0x61,0x6e,0x73,0x70,0x6f,0x
 extern volatile uint32_t GLOBAL_FLAG_RX;
 extern volatile uint32_t GLOBAL_FLAG_TX;
 extern volatile uint8_t  GLOBAL_CHARGE_FLAG;
+extern volatile uint32_t GLOBAL_TEST_FLAG;
 
 /* BEGIN Prototypes */
 void StartUpConfig(void);
